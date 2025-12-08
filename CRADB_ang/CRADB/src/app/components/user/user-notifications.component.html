@@ -1,0 +1,25 @@
+<div class="notifications-container">
+  <div class="header">
+    <h1>Notifications</h1>
+    <p>Stay updated with your bookings and events</p>
+  </div>
+
+  <div *ngIf="notifications.length === 0" class="empty-state">
+    <div class="empty-icon">🔔</div>
+    <h3>No new notifications</h3>
+    <p>You're all caught up!</p>
+  </div>
+
+  <div class="notification-list" *ngIf="notifications.length > 0">
+    <div class="notification-card" *ngFor="let note of notifications">
+      <div class="note-icon">
+        <i class="fas fa-info-circle"></i>
+      </div>
+      <div class="note-content">
+        <div class="note-title">{{note.Title}}</div>
+        <div class="note-message">{{note.Message}}</div>
+        <div class="note-time">{{note.CreatedAt | date:'medium'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

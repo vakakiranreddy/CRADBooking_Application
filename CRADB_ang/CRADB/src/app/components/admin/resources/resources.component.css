@@ -1,0 +1,24 @@
+.admin-content {
+  padding: 20px 30px;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 80px);
+}
+
+.resource-item {
+  padding: 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resource-item:hover {
+  background-color: #f8f9fa;
+  border-color: #007bff;
+}
+
+.resource-item.active {
+  background-color: #e3f2fd;
+  border-color: #007bff;
+}

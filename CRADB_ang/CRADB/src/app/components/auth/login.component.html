@@ -1,0 +1,86 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100 g-0">
+    <!-- Left Section -->
+    <div class="col-lg-6 d-none d-lg-flex left-section align-items-center justify-content-center">
+      <div class="exclamation-shape">
+        <div class="exclamation-top"></div>
+        <div class="exclamation-dot"></div>
+      </div>
+      <div class="position-relative" style="z-index: 3; max-width: 400px;">
+        <div class="quote-icon rounded-circle d-flex align-items-center justify-content-center fw-bold mb-3">"</div>
+        <div class="message text-dark mb-3">
+          Booking your meeting room<br>is easy now!
+        </div>
+        <div class="cta-text">Try Kanini Workspace.</div>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="col-lg-6 right-section d-flex align-items-center justify-content-center p-4">
+      <div class="w-100" style="max-width: 420px;">
+        <div class="logo mb-5">
+          <img src="https://d3qscgr6xsioh.cloudfront.net/QKP5fuMOT4Cz5bq6FZo1_b56a9e68a063b1f453c5e2e9f5f3d19e.png?format=webp" alt="Kanini Logo" class="img-fluid">
+        </div>
+
+        <h2 class="page-title mb-2">Sign In</h2>
+        <p class="subtitle text-muted mb-4">Welcome back! Please enter email id and password</p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label for="email" class="form-label">Email ID</label>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="email" 
+              formControlName="email"
+              placeholder="name@kanini.com"
+              [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            <div class="invalid-feedback" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+              <span *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="position-relative">
+              <input 
+                [type]="showPassword ? 'text' : 'password'" 
+                class="form-control" 
+                id="password" 
+                formControlName="password"
+                placeholder="************"
+                [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <button 
+                type="button" 
+                class="btn btn-link position-absolute end-0 top-50 translate-middle-y text-muted"
+                (click)="togglePasswordVisibility()"
+                style="text-decoration: none; z-index: 10;">
+                <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+              </button>
+            </div>
+            <div class="invalid-feedback" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+              <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+            </div>
+          </div>
+
+          <div class="forgot-password-link text-end mb-4">
+            <a href="#" (click)="goToForgotPassword($event)" class="text-muted">Forgot your password?</a>
+          </div>
+
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <button 
+            type="submit" 
+            class="btn btn-signin w-100 text-white" 
+            [disabled]="loginForm.invalid || loading">
+            {{ loading ? 'LOGGING IN...' : 'SIGN IN' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

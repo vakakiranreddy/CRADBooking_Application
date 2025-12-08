@@ -1,0 +1,131 @@
+<div class="page-container" *ngIf="!loading && event">
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-background">
+      <img [src]="getEventImage()" [alt]="event.EventTitle">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <button class="back-btn" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back to Events
+      </button>
+
+      <div class="event-title-block">
+        <span class="status-badge" [class]="getEventStatusClass()">
+          {{getEventStatus()}}
+        </span>
+        <h1>{{event.EventTitle}}</h1>
+        <div class="hero-meta">
+          <span><i class="far fa-calendar"></i> {{formatEventDate(event.Date)}}</span>
+          <span class="separator">•</span>
+          <span><i class="far fa-clock"></i> {{formatTime(event.StartTime)}} - {{formatTime(event.EndTime)}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="content-container">
+    <div class="details-grid">
+
+      <!-- Left Column: Description & Info -->
+      <div class="main-info">
+        <section class="description-section">
+          <h2>About this Event</h2>
+          <p>{{event.Description || 'No description provided.'}}</p>
+        </section>
+
+        <section class="location-section" *ngIf="event.LocationName">
+          <h2>Location</h2>
+          <div class="location-card">
+            <div class="location-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="location-details">
+              <h3>{{event.LocationName}}</h3>
+              <p>Conference Room A, 2nd Floor</p> <!-- Mocked sub-location for demo -->
+              <a href="javascript:void(0)" class="directions-link">Get Directions</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="organizer-section" *ngIf="currentUser">
+          <h2>Organizer</h2>
+          <div class="organizer-card">
+            <div class="organizer-avatar">
+              {{(currentUser.FirstName?.[0] || 'U') + (currentUser.LastName?.[0] || '')}}
+            </div>
+            <div class="organizer-info">
+              <h3>{{currentUser.FirstName}} {{currentUser.LastName}}</h3>
+              <p>{{currentUser.Department || 'Employee'}}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: RSVP Sidebar -->
+      <div class="sidebar">
+        <div class="rsvp-card glass-panel" *ngIf="isUpcoming()">
+          <div class="rsvp-header">
+            <h3>Are you going?</h3>
+            <p>Let others know if you can make it.</p>
+          </div>
+
+          <div class="rsvp-options">
+            <button class="rsvp-option yes" [class.selected]="userRsvpStatus === 'Yes'" (click)="rsvp(RsvpStatus.Yes)">
+              <div class="check-circle"><i class="fas fa-check"></i></div>
+              <span>Yes, counting me in</span>
+            </button>
+
+            <button class="rsvp-option maybe" [class.selected]="userRsvpStatus === 'Maybe'"
+              (click)="rsvp(RsvpStatus.Maybe)">
+              <div class="check-circle"><i class="fas fa-question"></i></div>
+              <span>Maybe</span>
+            </button>
+
+            <button class="rsvp-option no" [class.selected]="userRsvpStatus === 'No'" (click)="rsvp(RsvpStatus.No)">
+              <div class="check-circle"><i class="fas fa-times"></i></div>
+              <span>No, can't make it</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="attendees-card glass-panel">
+          <h3>Who's Going?</h3>
+          <div class="attendee-stats">
+            <div class="stat-row">
+              <div class="stat-label">
+                <span class="dot yes"></span> Going
+              </div>
+              <span class="stat-value">{{eventCounts.interested}}</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">
+                <span class="dot maybe"></span> Maybe
+              </div>
+              <span class="stat-value">{{eventCounts.maybe}}</span>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">
+                <span class="dot no"></span> Not Going
+              </div>
+              <span class="stat-value">{{eventCounts.notInterested}}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-state" *ngIf="loading">
+  <div class="spinner"></div>
+</div>
+
+<div class="error-state" *ngIf="!loading && !event">
+  <h1>Event not found</h1>
+  <button class="back-btn dark" (click)="goBack()">Back to Events</button>
+</div>

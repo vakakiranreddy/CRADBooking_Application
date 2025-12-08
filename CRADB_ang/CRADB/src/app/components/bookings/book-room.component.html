@@ -1,0 +1,113 @@
+<div class="book-room-container">
+  <h2>Book Room</h2>
+  
+  <div *ngIf="selectedRoom" class="resource-info">
+    <h3>{{selectedRoom.RoomName}}</h3>
+    <p><strong>Capacity:</strong> {{selectedRoom.Capacity}}</p>
+    <p><strong>Location:</strong> {{selectedRoom.BuildingName}}, Floor {{selectedRoom.FloorName}}</p>
+    <div class="amenities">
+      <span *ngIf="selectedRoom.HasTV" class="amenity">TV</span>
+      <span *ngIf="selectedRoom.HasWhiteboard" class="amenity">Whiteboard</span>
+      <span *ngIf="selectedRoom.HasWiFi" class="amenity">WiFi</span>
+      <span *ngIf="selectedRoom.HasProjector" class="amenity">Projector</span>
+      <span *ngIf="selectedRoom.HasVideoConference" class="amenity">Video Conference</span>
+      <span *ngIf="selectedRoom.HasAirConditioning" class="amenity">AC</span>
+    </div>
+  </div>
+  
+  <div *ngIf="selectedDesk" class="resource-info">
+    <h3>{{selectedDesk.DeskName}}</h3>
+    <p><strong>Type:</strong> {{selectedDesk.DeskType}}</p>
+    <p><strong>Location:</strong> {{selectedDesk.BuildingName}}, Floor {{selectedDesk.FloorName}}</p>
+    <div class="amenities">
+      <span *ngIf="selectedDesk.HasMonitor" class="amenity">Monitor</span>
+      <span *ngIf="selectedDesk.HasKeyboard" class="amenity">Keyboard</span>
+      <span *ngIf="selectedDesk.HasMouse" class="amenity">Mouse</span>
+      <span *ngIf="selectedDesk.HasHeadset" class="amenity">Headset</span>
+      <span *ngIf="selectedDesk.HasWebcam" class="amenity">Webcam</span>
+    </div>
+  </div>
+
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="meetingName">Meeting Name *:</label>
+        <input 
+          type="text" 
+          id="meetingName" 
+          formControlName="meetingName"
+          [class.error]="bookingForm.get('meetingName')?.invalid && bookingForm.get('meetingName')?.touched">
+        <div *ngIf="bookingForm.get('meetingName')?.invalid && bookingForm.get('meetingName')?.touched" class="error-message">
+          Meeting name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="participantCount">Participant Count *:</label>
+        <input 
+          type="number" 
+          id="participantCount" 
+          formControlName="participantCount" 
+          min="1"
+          readonly
+          [class.error]="bookingForm.get('participantCount')?.invalid && bookingForm.get('participantCount')?.touched">
+        <div *ngIf="bookingForm.get('participantCount')?.invalid && bookingForm.get('participantCount')?.touched" class="error-message">
+          <span *ngIf="bookingForm.get('participantCount')?.errors?.['required']">Participant count is required</span>
+          <span *ngIf="bookingForm.get('participantCount')?.errors?.['min']">Must be at least 1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="startTime">Start Time *:</label>
+        <input 
+          type="datetime-local" 
+          id="startTime" 
+          formControlName="startTime"
+          [class.error]="bookingForm.get('startTime')?.invalid && bookingForm.get('startTime')?.touched">
+        <div *ngIf="bookingForm.get('startTime')?.invalid && bookingForm.get('startTime')?.touched" class="error-message">
+          Start time is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="endTime">End Time *:</label>
+        <input 
+          type="datetime-local" 
+          id="endTime" 
+          formControlName="endTime"
+          [class.error]="bookingForm.get('endTime')?.invalid && bookingForm.get('endTime')?.touched">
+        <div *ngIf="bookingForm.get('endTime')?.invalid && bookingForm.get('endTime')?.touched" class="error-message">
+          End time is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="purpose">Purpose:</label>
+      <textarea 
+        id="purpose" 
+        formControlName="purpose" 
+        rows="3"
+        maxlength="500"></textarea>
+      <small>Optional (max 500 characters)</small>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" formControlName="sendReminder">
+        Send reminder notification
+      </label>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="bookingForm.invalid || loading">
+        {{loading ? 'Booking...' : 'Book ' + resourceType}}
+      </button>
+      <button type="button" (click)="goBack()">Cancel</button>
+    </div>
+  </form>
+</div>

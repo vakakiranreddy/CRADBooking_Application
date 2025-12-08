@@ -1,0 +1,149 @@
+<div class="my-bookings-container">
+  <div class="page-header">
+    <h1>My Bookings</h1>
+    <p class="page-subtitle">Manage your room reservations and check-in status</p>
+  </div>
+
+  <div class="booking-stats">
+    <div class="stat-card active">
+      <div class="stat-icon">🟢</div>
+      <div class="stat-content">
+        <h3>Active</h3>
+        <p class="stat-number">{{getActiveBookingsCount()}}</p>
+      </div>
+    </div>
+    <div class="stat-card upcoming">
+      <div class="stat-icon">⏰</div>
+      <div class="stat-content">
+        <h3>Upcoming</h3>
+        <p class="stat-number">{{getUpcomingBookingsCount()}}</p>
+      </div>
+    </div>
+    <div class="stat-card completed">
+      <div class="stat-icon">✅</div>
+      <div class="stat-content">
+        <h3>Completed</h3>
+        <p class="stat-number">{{getCompletedBookingsCount()}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Loading your bookings...</p>
+  </div>
+
+  <div *ngIf="!loading && bookings.length === 0" class="empty-state">
+    <div class="empty-icon">📅</div>
+    <h3>No bookings found</h3>
+    <p>You don't have any bookings yet. Start by booking a room!</p>
+    <button class="book-now-btn" (click)="navigateToRooms()">Book a Room</button>
+  </div>
+
+  <div *ngIf="!loading && bookings.length > 0" class="bookings-section">
+    <div class="section-header">
+      <h2>All Bookings</h2>
+      <div class="filter-controls">
+        <select class="status-filter" [(ngModel)]="statusFilter" (change)="filterBookings()">
+          <option value="">All Status</option>
+          <option value="active">Active</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="bookings-grid">
+      <div *ngFor="let booking of filteredBookings; trackBy: trackByBookingId" class="booking-card"
+        [ngClass]="getBookingStatusClass(booking)">
+
+        <div class="booking-header">
+          <div class="booking-title">
+            <h4>{{booking.MeetingName || 'Meeting'}}</h4>
+            <span class="booking-id">#{{booking.BookingId}}</span>
+          </div>
+          <span class="status-badge" [ngClass]="'status-' + getBookingStatusClass(booking)">
+            {{getStatusText(booking.SessionStatus)}}
+          </span>
+        </div>
+
+        <div class="booking-details">
+          <div class="detail-row">
+            <span class="detail-icon">🏢</span>
+            <span class="detail-text">{{booking.ResourceName || 'Unknown Resource'}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">📍</span>
+            <span class="detail-text">{{booking.BuildingName || 'Unknown'}}, {{booking.FloorName || 'Unknown
+              Floor'}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">📅</span>
+            <span class="detail-text">{{formatDate(booking.StartTime)}}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">⏰</span>
+            <span class="detail-text">{{formatTime(booking.StartTime)}} - {{formatTime(booking.EndTime)}}</span>
+          </div>
+          <div class="detail-row" *ngIf="booking.ParticipantCount">
+            <span class="detail-icon">👥</span>
+            <span class="detail-text">{{booking.ParticipantCount}} participants</span>
+          </div>
+          <div class="detail-row" *ngIf="booking.Purpose">
+            <span class="detail-icon">📝</span>
+            <span class="detail-text">{{booking.Purpose}}</span>
+          </div>
+        </div>
+
+        <div class="booking-actions" *ngIf="hasActions(booking) || isBookingOverdue(booking) || isCompleted(booking)">
+
+          <!-- Toggle Switch for Check In/Out -->
+          <div class="action-container"
+            *ngIf="canCheckIn(booking) || canCheckOut(booking) || isBookingOverdue(booking) || isCompleted(booking)">
+            <span class="action-label">{{getToggleLabel(booking)}}</span>
+            <div class="toggle-switch"
+              [class.checked-in]="getStatusText(booking.SessionStatus) === 'Checked In' && !isBookingOverdue(booking)"
+              [class.overdue]="isBookingOverdue(booking) && getStatusText(booking.SessionStatus) === 'Checked In'"
+              [class.completed]="isCompleted(booking)"
+              [class.disabled]="isBookingOverdue(booking) || isCompleted(booking)"
+              (click)="!isBookingOverdue(booking) && !isCompleted(booking) && toggleCheckInOut(booking)">
+              <div class="toggle-slider">
+                <span class="toggle-icon">
+                  <i class="fas"
+                    [class.fa-check]="getStatusText(booking.SessionStatus) === 'Checked In' || isCompleted(booking)"
+                    [class.fa-power-off]="getStatusText(booking.SessionStatus) !== 'Checked In' && !isCompleted(booking)"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cancel Button (kept separate) -->
+          <button *ngIf="canCancel(booking)" class="action-btn cancel" (click)="cancelBooking(booking.BookingId)">
+            <span class="btn-icon">❌</span>
+            Cancel
+          </button>
+        </div>
+
+        <div *ngIf="getCheckInInfo(booking.BookingId) as checkIn" class="checkin-status">
+          <div class="checkin-timeline">
+            <div class="timeline-item completed">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-label">Checked In</span>
+                <span class="timeline-time">{{formatDateTime(checkIn.CheckInTime)}}</span>
+              </div>
+            </div>
+            <div *ngIf="checkIn.CheckOutTime" class="timeline-item completed">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-label">Checked Out</span>
+                <span class="timeline-time">{{formatDateTime(checkIn.CheckOutTime)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

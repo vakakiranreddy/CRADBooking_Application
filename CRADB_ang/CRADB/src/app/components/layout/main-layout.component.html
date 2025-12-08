@@ -1,0 +1,12 @@
+<app-sidebar [mobileOpen]="isSidebarOpen" (closeMobile)="isSidebarOpen = false"></app-sidebar>
+<div class="admin-main-content">
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <span class="mobile-brand">Kanini Workspace</span>
+    <button class="btn-toggle" type="button" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

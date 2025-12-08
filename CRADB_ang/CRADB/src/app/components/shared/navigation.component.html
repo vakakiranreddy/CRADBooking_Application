@@ -1,0 +1,61 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <div class="logo-icon">🏢</div>
+      <span class="logo-text">Workspace</span>
+    </div>
+
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" [class.active]="mobileMenuOpen">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-menu" [class.active]="mobileMenuOpen">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Home</a>
+
+      <div class="nav-dropdown" (mouseenter)="showBookDropdown = true" (mouseleave)="showBookDropdown = false">
+        <button class="nav-link dropdown-toggle">Book Space ▼</button>
+        <div class="dropdown-menu" [class.show]="showBookDropdown">
+          <a routerLink="/rooms" class="dropdown-item">Rooms</a>
+          <a routerLink="/desks" class="dropdown-item">Desks</a>
+        </div>
+      </div>
+
+      <a routerLink="/bookings" routerLinkActive="active" class="nav-link">Your Bookings</a>
+      <a routerLink="/calendar" routerLinkActive="active" class="nav-link">Calendar</a>
+      <a routerLink="/events" routerLinkActive="active" class="nav-link">Events</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="notification-dropdown" (mouseenter)="showNotifications = true"
+        (mouseleave)="showNotifications = false">
+        <div class="notification-icon" (click)="toggleNotifications()">
+          🔔<span class="notification-badge" *ngIf="notificationCount > 0">{{notificationCount}}</span>
+        </div>
+        <div class="dropdown-menu notification-menu" [class.show]="showNotifications">
+          <div class="notification-header">Notifications</div>
+          <div class="notification-item" *ngFor="let notification of notifications">
+            <div class="notification-content">
+              <div class="notification-title">{{notification.title}}</div>
+              <div class="notification-message">{{notification.message}}</div>
+              <div class="notification-time">{{notification.time}}</div>
+            </div>
+          </div>
+          <div class="notification-footer">
+            <a href="#" class="view-all">View All</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="user-dropdown" (mouseenter)="showUserDropdown = true" (mouseleave)="showUserDropdown = false">
+        <button class="user-profile-btn">
+          <div class="user-avatar">{{getUserInitials()}}</div>
+          <span class="user-name">{{currentUser?.FirstName}} {{currentUser?.LastName}}</span> ▼
+        </button>
+        <div class="dropdown-menu user-menu" [class.show]="showUserDropdown">
+          <a routerLink="/profile" class="dropdown-item">View Profile</a>
+          <button (click)="logout()" class="dropdown-item logout-btn">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,53 @@
+<div class="calendar-container">
+    <div class="calendar-header">
+        <h2>{{ currentMonth | date:'MMMM yyyy' }}</h2>
+        <div class="calendar-controls">
+            <button class="btn-nav" (click)="prevMonth()">❮</button>
+            <button class="btn-today" (click)="goToToday()">Today</button>
+            <button class="btn-nav" (click)="nextMonth()">❯</button>
+        </div>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="weekdays">
+            <div class="weekday" *ngFor="let day of weekDays">{{ day }}</div>
+        </div>
+        <div class="days">
+            <div class="day-cell" *ngFor="let day of calendarDays" [class.other-month]="!day.isCurrentMonth"
+                [class.today]="day.isToday" (click)="selectDay(day)">
+
+                <span class="day-number">{{ day.date | date:'d' }}</span>
+
+                <div class="day-events">
+                    <div *ngFor="let event of day.events" class="calendar-event"
+                        [ngClass]="event.type === 'booking' ? 'event-type-booking' : 'event-type-event'">
+                        {{ event.time | date:'shortTime' }} {{ event.title }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Event Details Modal -->
+<div class="modal-backdrop" *ngIf="selectedDay"></div>
+<div class="event-details-modal" *ngIf="selectedDay">
+    <div class="modal-header">
+        <h3>{{ selectedDay.date | date:'fullDate' }}</h3>
+        <button class="btn-close" (click)="closeModal()">×</button>
+    </div>
+
+    <div class="events-list" *ngIf="selectedDay.events.length > 0; else noEvents">
+        <div class="event-item" *ngFor="let event of selectedDay.events">
+            <h4><span class="badge" [ngClass]="event.type">{{ event.type }}</span> {{ event.title }}</h4>
+            <div class="event-meta">
+                <span>⏰ {{ event.time | date:'shortTime' }}</span>
+                <span>📍 {{ event.location }}</span>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noEvents>
+        <p class="text-center text-muted">No events or bookings for this day.</p>
+    </ng-template>
+</div>

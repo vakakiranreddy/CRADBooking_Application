@@ -1,0 +1,455 @@
+
+> cradb@0.0.0 build
+> ng build
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [5.860 seconds] - 2025-12-07T12:38:52.545Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BookingListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/booking-list/booking-list.component.ts:12:26:
+[37m      12 │   imports: [CommonModule, [32mSidebarComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BroadcastManagementComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/broadcast-management/broadcast-management.component.ts:14:60:
+[37m      14 │ ...CommonModule, FormsModule, ReactiveFormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of DesksComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/desks/desks.component.ts:15:26:
+[37m      15 │   imports: [CommonModule, [32mSidebarComponent[37m, RouterModule, Reactive...
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of EmployeesComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/employees/employees.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of LocationsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of RoomsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/rooms/rooms.component.ts:15:74:
+[37m      15 │ ...RouterModule, ReactiveFormsModule, FormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of MyBookingsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/bookings/my-bookings.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DeskListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/desks/desk-list.component.ts:14:39:
+[37m      14 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserEventsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavbarComponent is not used within the template of MainLayoutComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/layout/main-layout.component.ts:11:40:
+[37m      11 │ ...: [CommonModule, RouterOutlet, [32mNavbarComponent[37m, SidebarComponent],
+         ╵                                   [32m~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of RoomListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/rooms/room-list.component.ts:16:39:
+[37m      16 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserProfileComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/user/user-profile.component.ts:10:39:
+[37m      10 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDuplicate member "loadBookingsData" in class body[0m [duplicate-class-member]
+
+    src/app/components/dashboard/dashboard.component.ts:82:2:
+[37m      82 │   [32mloadBookingsData[37m(): void {
+         ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+  The original member "loadBookingsData" is here:
+
+    src/app/components/dashboard/dashboard.component.ts:25:2:
+[37m      25 │   [32mloadBookingsData[37m(): void {
+         ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG2007: Class is using Angular features but is not decorated. Please add an explicit Angular decorator.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:4:13:
+[37m      4 │ export class [32mDashboardComponent[37m implements OnInit {
+        ╵              [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'AuthService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:8:25:
+[37m      8 │     private authService: [32mAuthService[37m,
+        ╵                          [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:9:28:
+[37m      9 │     private bookingService: [32mBookingService[37m,
+        ╵                             [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'CheckInService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:10:28:
+[37m      10 │     private checkInService: [32mCheckInService[37m,
+         ╵                             [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'RoomService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:11:25:
+[37m      11 │     private roomService: [32mRoomService[37m,
+         ╵                          [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'LocationService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:12:29:
+[37m      12 │     private locationService: [32mLocationService[37m,
+         ╵                              [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'Router'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:13:20:
+[37m      13 │     private router: [32mRouter[37m,
+         ╵                     [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentUser' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:16:9:
+[37m      16 │     this.[32mcurrentUser[37m = this.authService.getCurrentUser();
+         ╵          [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'user' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:18:44:
+[37m      18 │     this.authService.currentUser$.subscribe([32muser[37m => {
+         ╵                                             [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentUser' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:19:11:
+[37m      19 │       this.[32mcurrentUser[37m = user;
+         ╵            [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2393: Duplicate function implementation.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:25:2:
+[37m      25 │   [32mloadBookingsData[37m(): void {
+         ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:27:23:
+[37m      27 │       next: (bookings: [32mBookingResponse[37m[]) => {
+         ╵                        [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'recentBookings' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:30:13:
+[37m      30 │         this.[32mrecentBookings[37m = enhancedBookings.slice(0, 5);
+         ╵              [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'enhancedBookings'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:30:30:
+[37m      30 │         this.recentBookings = [32menhancedBookings[37m.slice(0, 5);
+         ╵                               [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'user' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:49:44:
+[37m      49 │     this.authService.currentUser$.subscribe([32muser[37m => {
+         ╵                                             [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentUser' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:50:11:
+[37m      50 │       this.[32mcurrentUser[37m = user;
+         ╵            [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentUser' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:60:11:
+[37m      60 │       this.[32mcurrentUser[37m = currentUser;
+         ╵            [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'currentUser' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:67:14:
+[37m      67 │     if (!this.[32mcurrentUser[37m) return;
+         ╵               [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'locations' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:71:13:
+[37m      71 │       next: ([32mlocations[37m) => {
+         ╵              [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'locations' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:72:13:
+[37m      72 │         this.[32mlocations[37m = locations;
+         ╵              [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'error' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:75:14:
+[37m      75 │       error: ([32merror[37m) => {
+         ╵               [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2393: Duplicate function implementation.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:82:2:
+[37m      82 │   [32mloadBookingsData[37m(): void {
+         ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:84:23:
+[37m      84 │       next: (bookings: [32mBookingResponse[37m[]) => {
+         ╵                        [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'room' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:106:21:
+[37m      106 │               next: ([32mroom[37m) => {
+          ╵                      [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'locations' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:107:38:
+[37m      107 │ ...     const location = this.[32mlocations[37m.find(l => l.LocationId ==...
+          ╵                               [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'l' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:107:53:
+[37m      107 │ ...location = this.locations.find([32ml[37m => l.LocationId === room.Loca...
+          ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'recentBookings' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:118:13:
+[37m      118 │         this.[32mrecentBookings[37m = enhancedBookings.slice(0, 5);
+          ╵              [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'activeBookings' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:120:13:
+[37m      120 │         this.[32mactiveBookings[37m = enhancedBookings.filter((b: Booking...
+          ╵              [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:120:58:
+[37m      120 │ ....activeBookings = enhancedBookings.filter((b: [32mBookingResponse[37m) =>
+          ╵                                                  [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'upcomingBookings' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:123:13:
+[37m      123 │         this.[32mupcomingBookings[37m = enhancedBookings.filter((b: Booki...
+          ╵              [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:123:60:
+[37m      123 │ ...pcomingBookings = enhancedBookings.filter((b: [32mBookingResponse[37m) =>
+          ╵                                                  [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2686: 'Toastify' refers to a UMD global, but the current file is a module. Consider adding an import instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:129:8:
+[37m      129 │         [32mToastify[37m({
+          ╵         [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:157:22:
+[37m      157 │   canCheckIn(booking: [32mBookingResponse[37m): boolean {
+          ╵                       [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:214:23:
+[37m      214 │   canCheckOut(booking: [32mBookingResponse[37m): boolean {
+          ╵                        [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:223:28:
+[37m      223 │   toggleCheckInOut(booking: [32mBookingResponse[37m): void {
+          ╵                             [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:231:26:
+[37m      231 │   getToggleLabel(booking: [32mBookingResponse[37m): string {
+          ╵                           [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:246:25:
+[37m      246 │   getToggleIcon(booking: [32mBookingResponse[37m): string {
+          ╵                          [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'BookingResponse'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:261:28:
+[37m      261 │   isBookingOverdue(booking: [32mBookingResponse[37m): boolean {
+          ╵                             [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'recentBookings' does not exist on type 'DashboardComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:268:25:
+[37m      268 │     const booking = this.[32mrecentBookings[37m.find(b => b.BookingId ===...
+          ╵                          [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:268:45:
+[37m      268 │ ...oking = this.recentBookings.find([32mb[37m => b.BookingId === bookingId);
+          ╵                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2686: 'Toastify' refers to a UMD global, but the current file is a module. Consider adding an import instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:274:8:
+[37m      274 │         [32mToastify[37m({
+          ╵         [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:284:13:
+[37m      284 │       next: ([32mresponse[37m) => {
+          ╵              [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2686: 'Toastify' refers to a UMD global, but the current file is a module. Consider adding an import instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:285:8:
+[37m      285 │         [32mToastify[37m({
+          ╵         [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'error' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:292:14:
+[37m      292 │       error: ([32merror[37m) => {
+          ╵               [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2686: 'Toastify' refers to a UMD global, but the current file is a module. Consider adding an import instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:302:8:
+[37m      302 │         [32mToastify[37m({
+          ╵         [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:313:13:
+[37m      313 │       next: ([32mresponse[37m) => {
+          ╵              [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2686: 'Toastify' refers to a UMD global, but the current file is a module. Consider adding an import instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:314:8:
+[37m      314 │         [32mToastify[37m({
+          ╵         [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'error' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:321:14:
+[37m      321 │       error: ([32merror[37m) => {
+          ╵               [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2686: 'Toastify' refers to a UMD global, but the current file is a module. Consider adding an import instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:323:8:
+[37m      323 │         [32mToastify[37m({
+          ╵         [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'cdr' does not exist on type 'UserEventsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:61:13:
+[37m      61 │         this.[32mcdr[37m.detectChanges();
+         ╵              [32m~~~[0m
+
+[39m[22m

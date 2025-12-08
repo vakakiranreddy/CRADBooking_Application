@@ -1,0 +1,285 @@
+<div class="container-fluid">
+  <!-- Header Section -->
+  <div class="admin-header">
+    <div class="header-left">
+      <h2 class="page-title">Rooms Management</h2>
+      <p class="page-subtitle">View and manage all conference rooms and meeting spaces.</p>
+    </div>
+    <div class="profile-section">
+      <div class="profile-trigger" (click)="toggleProfileDropdown()">
+        <div class="profile-avatar">
+          <span>{{ getUserInitials() }}</span>
+        </div>
+        <span class="profile-name">{{ getUserRole() }}</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+
+      @if (showProfileDropdown) {
+      <div class="profile-dropdown">
+        <a class="dropdown-item" routerLink="/profile">
+          <i class="fas fa-user"></i>Profile
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>Logout
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Actions Bar -->
+  <div class="actions-bar">
+    <div class="actions-left">
+      <h4 class="resource-count">All Rooms <span class="count-badge">{{filteredRooms.length}}</span></h4>
+    </div>
+    <div class="actions-right">
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search rooms..." [(ngModel)]="searchTerm"
+          (input)="applyFilters()">
+      </div>
+      <select class="filter-select" [(ngModel)]="statusFilter" (change)="applyFilters()">
+        <option value="">All Status</option>
+        <option value="available">Available</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="blocked">Blocked</option>
+      </select>
+      <button class="btn-refresh" (click)="loadRooms()">
+        <i class="fas fa-sync"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="content-section">
+
+    @if (loading) {
+    <div class="loading-state">
+      <div class="spinner-border"></div>
+      <p>Loading rooms...</p>
+    </div>
+    }
+
+    @if (!loading && rooms.length === 0) {
+    <div class="empty-state">
+      <i class="fas fa-door-open"></i>
+      <h5>No Rooms Found</h5>
+      <p>Start by creating resources and adding room details</p>
+      <button class="btn-primary" routerLink="/admin/resources">
+        <i class="fas fa-plus"></i>Create First Room
+      </button>
+    </div>
+    }
+
+    @if (!loading && filteredRooms.length > 0) {
+    <div class="resources-grid">
+      @for (room of filteredRooms; track room.RoomId) {
+      <div class="resource-card">
+        <div class="resource-image">
+          @if (room.RoomImage) {
+          <img [src]="getImageUrl(room.RoomImage)" alt="{{ room.RoomName }}">
+          } @else {
+          <div class="image-placeholder">
+            <i class="fas fa-door-open"></i>
+          </div>
+          }
+        </div>
+        <div class="resource-header">
+          <h5 class="resource-name">{{ room.RoomName }}</h5>
+          <span [class]="'status-badge ' + getRoomStatusClass(room)">{{ getRoomStatus(room) }}</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-details">
+            <div class="detail-item">
+              <i class="fas fa-users"></i>
+              <span>{{ room.Capacity }} people</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ room.LocationName }}</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-building"></i>
+              <span>{{ room.BuildingName }} - {{ room.FloorName }}</span>
+            </div>
+            @if (room.PhoneExtension) {
+            <div class="detail-item">
+              <i class="fas fa-phone"></i>
+              <span>Ext: {{ room.PhoneExtension }}</span>
+            </div>
+            }
+          </div>
+
+          <div class="amenities-section">
+            <h6 class="section-title">Amenities</h6>
+            <div class="amenities-list">
+              @if (room.HasTV) {
+              <span class="amenity-tag">TV</span>
+              }
+              @if (room.HasWhiteboard) {
+              <span class="amenity-tag">Whiteboard</span>
+              }
+              @if (room.HasWiFi) {
+              <span class="amenity-tag">WiFi</span>
+              }
+              @if (room.HasProjector) {
+              <span class="amenity-tag">Projector</span>
+              }
+              @if (room.HasVideoConference) {
+              <span class="amenity-tag">Video Conference</span>
+              }
+              @if (room.HasAirConditioning) {
+              <span class="amenity-tag">AC</span>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="resource-footer">
+          <div class="action-buttons">
+            <button class="btn-action btn-edit" (click)="editRoom(room)">
+              <i class="fas fa-edit"></i>Edit
+            </button>
+            <button class="btn-action btn-maintenance" (click)="toggleMaintenance(room)" [disabled]="room.IsBlocked">
+              <i class="fas fa-tools"></i>
+              {{ room.IsUnderMaintenance ? 'End' : 'Maintenance' }}
+            </button>
+            <button class="btn-action btn-block" (click)="toggleBlock(room)" [disabled]="room.IsUnderMaintenance">
+              <i class="fas fa-ban"></i>
+              {{ room.IsBlocked ? 'Unblock' : 'Block' }}
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    }
+
+  </div>
+
+  @if (editingRoom) {
+  <div class="modal-overlay" (click)="cancelEdit()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Edit Room: {{ editingRoom.RoomName }}</h5>
+          <button class="btn-close" (click)="cancelEdit()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="roomForm" (ngSubmit)="saveRoom()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Room Name *</label>
+                <input type="text" class="form-control" formControlName="roomName">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Capacity *</label>
+                <input type="number" class="form-control" formControlName="capacity" min="1">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Room Image</label>
+              <input type="file" class="form-control" (change)="onRoomImageChange($event)" accept="image/*">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Amenities</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasTV">
+                    <label class="form-check-label">TV</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasWhiteboard">
+                    <label class="form-check-label">Whiteboard</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasWiFi">
+                    <label class="form-check-label">WiFi</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasProjector">
+                    <label class="form-check-label">Projector</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasVideoConference">
+                    <label class="form-check-label">Video Conference</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasAirConditioning">
+                    <label class="form-check-label">Air Conditioning</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone Extension</label>
+              <input type="text" class="form-control" formControlName="phoneExtension">
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary" [disabled]="roomForm.invalid || saving">
+                {{ saving ? 'Saving...' : 'Save Changes' }}
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+
+  <!-- Delete Confirmation Modal -->
+  @if (showDeleteModal) {
+  <div class="modal-overlay" (click)="cancelDelete()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Confirm Delete</h5>
+          <button class="btn-close" (click)="cancelDelete()"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete room "{{ itemToDelete?.RoomName }}"? This will also delete the resource.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
+          <button class="btn btn-danger" (click)="deleteConfirmed()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Block Reason Modal -->
+  @if (showBlockModal) {
+  <div class="modal-overlay" (click)="cancelBlock()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Block Resource</h5>
+          <button class="btn-close" (click)="cancelBlock()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Reason for blocking (Optional)</label>
+            <textarea class="form-control" rows="3" [(ngModel)]="blockReason" placeholder="Enter reason..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="cancelBlock()">Cancel</button>
+          <button class="btn btn-danger" (click)="blockConfirmed()">Block</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

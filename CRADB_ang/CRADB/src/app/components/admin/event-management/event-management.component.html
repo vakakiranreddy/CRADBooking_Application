@@ -1,0 +1,271 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-start mb-4" style="padding-top: 20px;">
+      <div>
+        <h2 class="h3 mb-1" style="font-weight: 600;">Event Management</h2>
+        <p class="text-muted mb-0" style="font-size: 14px;">Create and manage events across all locations.</p>
+      </div>
+      <div class="position-relative">
+        <div class="d-flex align-items-center gap-2" (click)="toggleProfileDropdown()" style="cursor: pointer;">
+          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center"
+            style="width: 35px; height: 35px; overflow: hidden;">
+            <img *ngIf="getUserProfileImage()" [src]="getUserProfileImage()" alt="Profile"
+              style="width: 100%; height: 100%; object-fit: cover;">
+            <span *ngIf="!getUserProfileImage()" style="font-size: 14px;">{{ getUserInitials() }}</span>
+          </div>
+          <span style="font-size: 14px; font-weight: 500;">{{ getUserRole() }}</span>
+          <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+        </div>
+
+        @if (showProfileDropdown) {
+        <div class="dropdown-menu show position-absolute"
+          style="right: 0; top: 100%; margin-top: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <a class="dropdown-item" routerLink="/profile" style="padding: 8px 16px;">
+            <i class="fas fa-user me-2"></i>Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()" style="padding: 8px 16px; cursor: pointer;">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </a>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="filters-section">
+      <div class="d-flex align-items-center gap-3">
+        <h5 class="event-count">
+          Founding <span class="count-number">{{filteredEvents.length}} Events</span>
+        </h5>
+
+        <select [(ngModel)]="selectedLocation" (change)="filterEvents()" class="filter-select">
+          <option value="">Chennai</option>
+          <option *ngFor="let location of locations; trackBy: trackByLocationId" [value]="location.LocationId">
+            {{location.Name}}
+          </option>
+        </select>
+
+        <select [(ngModel)]="eventFilter" (change)="filterEvents()" class="filter-select">
+          <option value="">Today</option>
+          <option value="today">Today</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="past">Past</option>
+        </select>
+      </div>
+
+      <button class="btn-add" (click)="showCreateForm = !showCreateForm">
+        Add a new event
+      </button>
+    </div>
+
+    <div *ngIf="showCreateForm" class="form-card">
+      <div class="form-header">
+        <h5>{{editingEvent ? 'Edit Event' : 'Create New Event'}}</h5>
+      </div>
+      <div class="form-body">
+        <form [formGroup]="eventForm" (ngSubmit)="saveEvent()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Title *</label>
+              <input type="text" formControlName="title" class="form-input" placeholder="Enter event title">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Location *</label>
+              <select formControlName="locationId" class="form-input">
+                <option value="">Select Location</option>
+                <option *ngFor="let location of locations; trackBy: trackByLocationId" [value]="location.LocationId">
+                  {{location.Name}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label>Event Date *</label>
+              <input type="date" formControlName="eventDate" class="form-input" [min]="getTodayDate()">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Start Time *</label>
+              <input type="time" formControlName="startTime" class="form-input">
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">End Time *</label>
+              <input type="time" formControlName="endTime" class="form-input">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Max Participants *</label>
+              <input type="number" formControlName="maxParticipants" class="form-input" min="1" placeholder="100">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Event Image</label>
+              <input type="file" (change)="onFileSelected($event)" class="form-input" accept="image/*">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea formControlName="description" class="form-input" rows="4"
+              placeholder="Describe your event..."></textarea>
+          </div>
+
+          <div *ngIf="editingEvent" class="mb-3">
+            <div class="form-check">
+              <input type="checkbox" formControlName="isActive" class="form-check-input" id="activeCheck">
+              <label class="form-check-label" for="activeCheck">Active Event</label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-cancel" (click)="cancelEdit()">Cancel</button>
+            <button type="submit" class="btn-save" [disabled]="eventForm.invalid || saving">
+              {{saving ? 'Saving...' : (editingEvent ? 'Update Event' : 'Create Event')}}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="loading-state">
+      <div class="spinner-border text-primary"></div>
+      <p>Loading events...</p>
+    </div>
+
+    <div *ngIf="!loading && filteredEvents.length === 0" class="no-events">
+      <i class="fas fa-calendar-times fa-4x text-muted mb-3"></i>
+      <h5>No Events Found</h5>
+      <p>No events match your current filters.</p>
+      <button class="btn-add" (click)="showCreateForm = true">Create Your First Event</button>
+    </div>
+
+    <div *ngIf="!loading && filteredEvents.length > 0" class="events-grid">
+      <div *ngFor="let event of filteredEvents; trackBy: trackByEventId" class="event-card-wrapper">
+        <div class="event-card">
+          <div class="event-image">
+            <img *ngIf="event.EventImage" [src]="'data:image/jpeg;base64,' + event.EventImage" [alt]="event.EventTitle">
+            <div *ngIf="!event.EventImage" class="image-placeholder">
+              <i class="fas fa-calendar-alt fa-3x"></i>
+            </div>
+          </div>
+
+          <div class="event-content">
+            <h5 class="event-title">{{event.EventTitle}}</h5>
+            <div class="event-date">{{formatDate(event.Date)}}, {{formatTime(event.StartTime)}} -
+              {{formatTime(event.EndTime)}}</div>
+
+            <div class="participants-info">
+              <i class="fas fa-user-circle"></i>
+              <span class="count">{{getTotalRsvps(event.EventId)}}</span>
+              <span class="text">total responses</span>
+            </div>
+
+            <div class="rsvp-stats">
+              <div class="rsvp-stat interested" (click)="showInterestedEmployees(event.EventId)"
+                style="cursor: pointer;" title="Click to see interested employees">
+                <span class="icon">👍</span>
+                <span class="count">{{getRsvpCounts(event.EventId).interested}}</span>
+              </div>
+              <div class="rsvp-stat maybe">
+                <span class="icon">🤔</span>
+                <span class="count">{{getRsvpCounts(event.EventId).maybe}}</span>
+              </div>
+              <div class="rsvp-stat not-interested">
+                <span class="icon">👎</span>
+                <span class="count">{{getRsvpCounts(event.EventId).notInterested}}</span>
+              </div>
+            </div>
+
+            <div class="event-actions">
+              <button class="btn-view" (click)="viewRsvpDetails(event.EventId)">View RSVPs</button>
+              <button class="btn-edit" (click)="editEvent(event); $event.stopPropagation()">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn-delete" (click)="deleteEvent(event.EventId); $event.stopPropagation()">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RSVP Details Modal -->
+<div *ngIf="showInterestedModal" class="modal-overlay" (click)="closeInterestedModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h5>RSVP Details</h5>
+      <button class="btn-close" (click)="closeInterestedModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="loadingUsers" class="text-center">
+        <div class="spinner-border text-primary"></div>
+        <p>Loading RSVP details...</p>
+      </div>
+      <div *ngIf="!loadingUsers && interestedUsers.length === 0" class="text-center">
+        <p>No RSVP responses yet.</p>
+      </div>
+      <div *ngIf="!loadingUsers && interestedUsers.length > 0" class="rsvp-sections">
+        <!-- Going Section -->
+        <div class="rsvp-section" *ngIf="getFilteredUsers(0).length > 0">
+          <h6 class="section-title">👍 Going ({{getFilteredUsers(0).length}})</h6>
+          <div class="users-list">
+            <div *ngFor="let user of getFilteredUsers(0)" class="user-item">
+              <div class="user-avatar">
+                <span class="user-initial">{{getUserInitial(user)}}</span>
+              </div>
+              <div class="user-info">
+                <h6>{{getUserDisplayName(user)}}</h6>
+                <p>{{user.Email || 'No email'}}</p>
+                <small>{{user.Title || 'No Title'}} • {{user.Role}}</small>
+                <div class="response-date">Last login: {{formatResponseDate(user.LastLoginAt)}}</div>
+              </div>
+              <div class="status-badge going">👍 Yes</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maybe Section -->
+        <div class="rsvp-section" *ngIf="getFilteredUsers(2).length > 0">
+          <h6 class="section-title">🤔 Maybe ({{getFilteredUsers(2).length}})</h6>
+          <div class="users-list">
+            <div *ngFor="let user of getFilteredUsers(2)" class="user-item">
+              <div class="user-avatar">
+                <span class="user-initial">{{getUserInitial(user)}}</span>
+              </div>
+              <div class="user-info">
+                <h6>{{getUserDisplayName(user)}}</h6>
+                <p>{{user.Email || 'No email'}}</p>
+                <small>{{user.Title || 'No Title'}} • {{user.Role}}</small>
+                <div class="response-date">Last login: {{formatResponseDate(user.LastLoginAt)}}</div>
+              </div>
+              <div class="status-badge maybe">🤔 Maybe</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Not Going Section -->
+        <div class="rsvp-section" *ngIf="getFilteredUsers(1).length > 0">
+          <h6 class="section-title">👎 Not Going ({{getFilteredUsers(1).length}})</h6>
+          <div class="users-list">
+            <div *ngFor="let user of getFilteredUsers(1)" class="user-item">
+              <div class="user-avatar">
+                <span class="user-initial">{{getUserInitial(user)}}</span>
+              </div>
+              <div class="user-info">
+                <h6>{{getUserDisplayName(user)}}</h6>
+                <p>{{user.Email || 'No email'}}</p>
+                <small>{{user.Title || 'No Title'}} • {{user.Role}}</small>
+                <div class="response-date">Last login: {{formatResponseDate(user.LastLoginAt)}}</div>
+              </div>
+              <div class="status-badge not-going">👎 No</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

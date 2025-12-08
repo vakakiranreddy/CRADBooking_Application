@@ -1,0 +1,94 @@
+<div class="rsvp-details-container">
+  <div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+      <h2 class="h3 mb-1" style="font-weight: 600;">Event RSVP Details</h2>
+      <p class="text-muted mb-0" style="font-size: 14px;">View detailed RSVP responses for events.</p>
+    </div>
+    <div class="position-relative">
+      <div class="d-flex align-items-center gap-2" (click)="toggleProfileDropdown()" style="cursor: pointer;">
+        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center" style="width: 35px; height: 35px; overflow: hidden;">
+          <img *ngIf="getUserProfileImage()" [src]="getUserProfileImage()" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
+          <span *ngIf="!getUserProfileImage()" style="font-size: 14px;">{{ getUserInitials() }}</span>
+        </div>
+        <span style="font-size: 14px; font-weight: 500;">{{ getUserRole() }}</span>
+        <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+      </div>
+      
+      @if (showProfileDropdown) {
+        <div class="dropdown-menu show position-absolute" style="right: 0; top: 100%; margin-top: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <a class="dropdown-item" routerLink="/profile" style="padding: 8px 16px;">
+            <i class="fas fa-user me-2"></i>Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()" style="padding: 8px 16px; cursor: pointer;">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+
+  <button class="back-btn" (click)="goBack()">← Back to Events</button>
+  
+  <div *ngIf="loading" class="loading">Loading RSVP details...</div>
+  
+  <div *ngIf="!loading && event" class="rsvp-details">
+    <div class="event-header">
+      <h1>{{event.EventTitle}} - RSVP Details</h1>
+      <p class="event-date">{{formatEventDate(event.Date)}} at {{formatTime(event.StartTime)}}</p>
+    </div>
+    
+    <div class="rsvp-summary">
+      <div class="summary-card yes">
+        <div class="summary-icon">👍</div>
+        <div class="summary-count">{{getCountByStatus('Yes')}}</div>
+        <div class="summary-label">Going</div>
+      </div>
+      <div class="summary-card maybe">
+        <div class="summary-icon">🤔</div>
+        <div class="summary-count">{{getCountByStatus('Maybe')}}</div>
+        <div class="summary-label">Maybe</div>
+      </div>
+      <div class="summary-card no">
+        <div class="summary-icon">👎</div>
+        <div class="summary-count">{{getCountByStatus('No')}}</div>
+        <div class="summary-label">Not Going</div>
+      </div>
+      <div class="summary-card total">
+        <div class="summary-icon">📊</div>
+        <div class="summary-count">{{rsvps.length}}</div>
+        <div class="summary-label">Total Responses</div>
+      </div>
+    </div>
+    
+    <div class="rsvp-tabs">
+      <button 
+        *ngFor="let tab of tabs" 
+        class="tab-btn" 
+        [class.active]="activeTab === tab.key"
+        (click)="setActiveTab(tab.key)">
+        {{tab.icon}} {{tab.label}} ({{getCountByStatus(tab.key)}})
+      </button>
+    </div>
+    
+    <div class="participants-list">
+      <div *ngIf="getFilteredRsvps().length === 0" class="no-participants">
+        No participants found for this category.
+      </div>
+      
+      <div *ngFor="let rsvp of getFilteredRsvps()" class="participant-card">
+        <div class="participant-avatar">
+          {{getParticipantInitials(rsvp.UserId)}}
+        </div>
+        <div class="participant-info">
+          <h4>{{getUserName(rsvp.UserId)}}</h4>
+          <p class="participant-email">{{getUserEmail(rsvp.UserId)}}</p>
+          <p class="response-date">Responded on {{formatDate(rsvp.ResponseDate)}}</p>
+        </div>
+        <div class="participant-status" [class]="getStatusClass(rsvp.Status)">
+          {{getStatusIcon(rsvp.Status)}} {{getStatusString(rsvp.Status)}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,259 @@
+<div class="container-fluid">
+  <!-- Header Section -->
+  <div class="admin-header">
+    <div class="header-left">
+      <h2 class="page-title">Desks Management</h2>
+      <p class="page-subtitle">View and manage all desk spaces and workstations.</p>
+    </div>
+    <div class="profile-section">
+      <div class="profile-trigger" (click)="toggleProfileDropdown()">
+        <div class="profile-avatar">
+          <span>{{ getUserInitials() }}</span>
+        </div>
+        <span class="profile-name">{{ getUserRole() }}</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+
+      @if (showProfileDropdown) {
+      <div class="profile-dropdown">
+        <a class="dropdown-item" routerLink="/profile">
+          <i class="fas fa-user"></i>Profile
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>Logout
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Actions Bar -->
+  <div class="actions-bar">
+    <div class="actions-left">
+      <h4 class="resource-count">All Desks <span class="count-badge">{{filteredDesks.length}}</span></h4>
+    </div>
+    <div class="actions-right">
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search desks..." [(ngModel)]="searchTerm"
+          (input)="applyFilters()">
+      </div>
+      <select class="filter-select" [(ngModel)]="statusFilter" (change)="applyFilters()">
+        <option value="">All Status</option>
+        <option value="available">Available</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="blocked">Blocked</option>
+      </select>
+      <button class="btn-refresh" (click)="loadDesks()">
+        <i class="fas fa-sync"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="content-section">
+
+    @if (loading) {
+    <div class="loading-state">
+      <div class="spinner-border"></div>
+      <p>Loading desks...</p>
+    </div>
+    }
+
+    @if (!loading && desks.length === 0) {
+    <div class="empty-state">
+      <i class="fas fa-desktop"></i>
+      <h5>No Desks Found</h5>
+      <p>Create desk resources in the Resources section to see them here</p>
+      <button class="btn-primary" routerLink="/admin/resources">
+        <i class="fas fa-cube"></i>Go to Resources
+      </button>
+    </div>
+    }
+
+    @if (!loading && filteredDesks.length > 0) {
+    <div class="resources-grid">
+      @for (desk of filteredDesks; track desk.Id) {
+      <div class="resource-card">
+        <div class="resource-image">
+          @if (desk.DeskImage) {
+          <img [src]="getImageUrl(desk.DeskImage)" alt="{{ desk.DeskName }}">
+          } @else {
+          <div class="image-placeholder">
+            <i class="fas fa-desktop"></i>
+          </div>
+          }
+        </div>
+        <div class="resource-header">
+          <h5 class="resource-name">{{ desk.DeskName }}</h5>
+          <span [class]="'status-badge ' + getDeskStatusClass(desk)">{{ getDeskStatus(desk) }}</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-details">
+            <div class="detail-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ desk.LocationName }}</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-building"></i>
+              <span>{{ desk.BuildingName }} - {{ desk.FloorName }}</span>
+            </div>
+          </div>
+
+          @if (desk.Description) {
+          <p class="desk-description">{{ desk.Description }}</p>
+          }
+
+          <div class="amenities-section">
+            <h6 class="section-title">Equipment</h6>
+            <div class="amenities-list">
+              @if (desk.HasMonitor) {
+              <span class="amenity-tag">Monitor</span>
+              }
+              @if (desk.HasKeyboard) {
+              <span class="amenity-tag">Keyboard</span>
+              }
+              @if (desk.HasMouse) {
+              <span class="amenity-tag">Mouse</span>
+              }
+              @if (desk.HasHeadset) {
+              <span class="amenity-tag">Headset</span>
+              }
+              @if (desk.HasWebcam) {
+              <span class="amenity-tag">Webcam</span>
+              }
+              @if (!desk.HasMonitor && !desk.HasKeyboard && !desk.HasMouse && !desk.HasHeadset && !desk.HasWebcam) {
+              <span class="no-equipment">No equipment</span>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="resource-footer">
+          <div class="action-buttons">
+            <button class="btn-action btn-edit" (click)="editDesk(desk)">
+              <i class="fas fa-edit"></i>Edit
+            </button>
+            <button class="btn-action btn-maintenance" (click)="toggleMaintenance(desk)" [disabled]="desk.IsBlocked">
+              <i class="fas fa-tools"></i>
+              {{ desk.IsUnderMaintenance ? 'End' : 'Maintenance' }}
+            </button>
+            <button class="btn-action btn-block" (click)="toggleBlock(desk)" [disabled]="desk.IsUnderMaintenance">
+              <i class="fas fa-ban"></i>
+              {{ desk.IsBlocked ? 'Unblock' : 'Block' }}
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    }
+
+  </div>
+
+  @if (editingDesk) {
+  <div class="modal-overlay" (click)="cancelEdit()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Edit Desk: {{ editingDesk.DeskName }}</h5>
+          <button class="btn-close" (click)="cancelEdit()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="deskForm" (ngSubmit)="saveDesk()">
+            <div class="mb-3">
+              <label class="form-label">Desk Name *</label>
+              <input type="text" class="form-control" formControlName="deskName">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Desk Image</label>
+              <input type="file" class="form-control" (change)="onDeskImageChange($event)" accept="image/*">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Equipment</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasMonitor">
+                    <label class="form-check-label">Monitor</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasKeyboard">
+                    <label class="form-check-label">Keyboard</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasMouse">
+                    <label class="form-check-label">Mouse</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="hasDockingStation">
+                    <label class="form-check-label">Docking Station</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary" [disabled]="deskForm.invalid || saving">
+                {{ saving ? 'Saving...' : 'Save Changes' }}
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Delete Confirmation Modal -->
+  @if (showDeleteModal) {
+  <div class="modal-overlay" (click)="cancelDelete()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Confirm Delete</h5>
+          <button class="btn-close" (click)="cancelDelete()"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete desk "{{ itemToDelete?.DeskName }}"? This will also delete the resource.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
+          <button class="btn btn-danger" (click)="deleteConfirmed()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Block Reason Modal -->
+  @if (showBlockModal) {
+  <div class="modal-overlay" (click)="cancelBlock()">
+    <div class="modal-dialog" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Block Resource</h5>
+          <button class="btn-close" (click)="cancelBlock()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Reason for blocking (Optional)</label>
+            <textarea class="form-control" rows="3" [(ngModel)]="blockReason" placeholder="Enter reason..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="cancelBlock()">Cancel</button>
+          <button class="btn btn-danger" (click)="blockConfirmed()">Block</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

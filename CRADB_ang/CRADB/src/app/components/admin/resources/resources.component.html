@@ -1,0 +1,347 @@
+<div class="admin-content">
+  <div class="container-fluid" style="padding-top: 0;">
+    <!-- Header Section -->
+    <div class="d-flex justify-content-between align-items-start mb-4" style="padding-top: 20px;">
+      <div>
+        <h2 class="h3 mb-1" style="font-weight: 600;">Resource Management</h2>
+        <p class="text-muted mb-0" style="font-size: 14px;">Create and manage rooms and desks across all locations.</p>
+      </div>
+      <div class="position-relative">
+        <div class="d-flex align-items-center gap-2" (click)="toggleProfileDropdown()" style="cursor: pointer;">
+          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center"
+            style="width: 35px; height: 35px;">
+            <span style="font-size: 14px;">{{ getUserInitials() }}</span>
+          </div>
+          <span style="font-size: 14px; font-weight: 500;">{{ getUserRole() }}</span>
+          <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+        </div>
+
+        @if (showProfileDropdown) {
+        <div class="dropdown-menu show position-absolute"
+          style="right: 0; top: 100%; margin-top: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <a class="dropdown-item" routerLink="/profile" style="padding: 8px 16px;">
+            <i class="fas fa-user me-2"></i>Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()" style="padding: 8px 16px; cursor: pointer;">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </a>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <div class="row">
+          <!-- Resources Panel -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Resources</h5>
+                <button class="btn btn-sm btn-primary" (click)="showResourceForm = true">
+                  <i class="fas fa-plus"></i> Add Resource
+                </button>
+              </div>
+              <div class="card-body">
+                @if (loading) {
+                <div class="text-center">
+                  <div class="spinner-border spinner-border-sm"></div>
+                  <p class="mt-2">Loading...</p>
+                </div>
+                }
+                @if (!loading && resources.length === 0) {
+                <p class="text-muted">No resources found</p>
+                }
+                @for (resource of resources; track resource.Id) {
+                <div class="resource-item" [ngClass]="{'active': selectedResource?.Id === resource.Id}"
+                  (click)="selectResource(resource)">
+                  <div class="d-flex align-items-center">
+                    <i [class]="getResourceTypeIcon(resource.ResourceType.toString())" class="me-3 text-primary"></i>
+                    <div class="flex-grow-1">
+                      <h6 class="mb-1">{{ resource.Name }}</h6>
+                      <small class="text-muted">
+                        {{ getResourceTypeText(resource.ResourceType) }} • {{ resource.LocationName }}
+                      </small>
+                    </div>
+                    <span class="badge bg-secondary">{{ getResourceTypeText(resource.ResourceType) }}</span>
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+
+            <!-- Resource Form -->
+            @if (showResourceForm) {
+            <div class="card mt-3">
+              <div class="card-header">
+                <h6>Add New Resource</h6>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="resourceForm" (ngSubmit)="saveResource()">
+                  <div class="mb-3">
+                    <label class="form-label">Resource Name *</label>
+                    <input type="text" class="form-control" formControlName="name">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Resource Type *</label>
+                    <select class="form-control" formControlName="type">
+                      <option value="">Select Type</option>
+                      <option value="1">Room</option>
+                      <option value="2">Desk</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Location *</label>
+                    <select class="form-control" (change)="onLocationChange($event)">
+                      <option value="">Select Location</option>
+                      <option *ngFor="let location of locations" [value]="location.LocationId">{{ location.Name }}
+                      </option>
+                    </select>
+                    <small class="text-muted">Select location to load buildings</small>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Building *</label>
+                    <select class="form-control" formControlName="buildingId" (change)="onBuildingChange()">
+                      <option value="">Select Building</option>
+                      <option *ngFor="let building of buildings" [value]="building.Id">{{ building.Name }}</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Floor *</label>
+                    <select class="form-control" formControlName="floorId">
+                      <option value="">Select Floor</option>
+                      <option *ngFor="let floor of floors" [value]="floor.Id">{{ floor.FloorName }}</option>
+                    </select>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="resourceForm.invalid || saving">
+                      {{ saving ? 'Saving...' : 'Save' }}
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" (click)="cancelResourceForm()">
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            }
+          </div>
+
+          <!-- Resource Details Panel -->
+          <div class="col-md-6">
+            @if (!selectedResource) {
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="fas fa-cube fa-3x text-muted mb-3"></i>
+                <h5>Select a Resource</h5>
+                <p class="text-muted">Choose a resource from the list to add rooms or desks</p>
+              </div>
+            </div>
+            }
+
+            @if (selectedResource) {
+            <div class="card">
+              <div class="card-header">
+                <h5 class="mb-0">{{ selectedResource.Name }}</h5>
+                <small class="text-muted">{{ getResourceTypeText(selectedResource.ResourceType) }} Resource</small>
+              </div>
+              <div class="card-body">
+                <div class="resource-details mb-4">
+                  <p><strong>Type:</strong> {{ getResourceTypeText(selectedResource.ResourceType) }}</p>
+                  <p><strong>Location:</strong> {{ selectedResource.LocationName }}</p>
+                  <p><strong>Building:</strong> {{ selectedResource.BuildingName }}</p>
+                  <p><strong>Floor:</strong> {{ selectedResource.FloorName }}</p>
+                  <p><strong>Debug - ResourceType:</strong> {{ selectedResource.ResourceType }} ({{ typeof
+                    selectedResource.ResourceType }})</p>
+                </div>
+
+                <div class="action-buttons">
+                  <h6>Add Details:</h6>
+                  <div class="d-flex gap-2 mb-3">
+                    @if (isRoomType(selectedResource.ResourceType)) {
+                    <button class="btn btn-outline-primary btn-sm" (click)="showRoomForm = true">
+                      <i class="fas fa-door-open me-1"></i> Edit Room Details
+                    </button>
+                    }
+                    @if (isDeskType(selectedResource.ResourceType)) {
+                    <button class="btn btn-outline-secondary btn-sm" (click)="showDeskForm = true">
+                      <i class="fas fa-desktop me-1"></i> Edit Desk Details
+                    </button>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Room Form -->
+            @if (showRoomForm && isRoomType(selectedResource.ResourceType)) {
+            <div class="card mt-3">
+              <div class="card-header">
+                <h6>Edit Room Details</h6>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="roomForm" (ngSubmit)="saveRoom()">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Room Name *</label>
+                      <input type="text" class="form-control" formControlName="roomName"
+                        [class.is-invalid]="roomForm.get('roomName')?.invalid && roomForm.get('roomName')?.touched">
+                      <div class="invalid-feedback"
+                        *ngIf="roomForm.get('roomName')?.invalid && roomForm.get('roomName')?.touched">
+                        Room name is required
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Capacity *</label>
+                      <input type="number" class="form-control" formControlName="capacity" min="1">
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Room Image</label>
+                    <input type="file" class="form-control" (change)="onRoomImageChange($event)" accept="image/*">
+                    <small class="text-muted">Upload an image for this room</small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Amenities</label>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasTV">
+                          <label class="form-check-label">TV</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasWhiteboard">
+                          <label class="form-check-label">Whiteboard</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasWiFi">
+                          <label class="form-check-label">WiFi</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasProjector">
+                          <label class="form-check-label">Projector</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasVideoConference">
+                          <label class="form-check-label">Video Conference</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasAirConditioning">
+                          <label class="form-check-label">Air Conditioning</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Phone Extension</label>
+                    <input type="text" class="form-control" formControlName="phoneExtension" maxlength="20">
+                    <small class="text-muted">Optional - Max 20 characters</small>
+                  </div>
+
+                  <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="roomForm.invalid || saving">
+                      {{ saving ? 'Saving...' : 'Save Room' }}
+                    </button>
+                    <small class="text-muted align-self-center" *ngIf="roomForm.invalid">
+                      Please fill in required fields (*)
+                    </small>
+                    <button type="button" class="btn btn-secondary btn-sm" (click)="cancelRoomForm()">
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            }
+
+            <!-- Desk Form -->
+            @if (showDeskForm && isDeskType(selectedResource.ResourceType)) {
+            <div class="card mt-3">
+              <div class="card-header">
+                <h6>Edit Desk Details</h6>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="deskForm" (ngSubmit)="saveDesk()">
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Desk Name *</label>
+                      <input type="text" class="form-control" formControlName="deskName">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Desk Type *</label>
+                      <select class="form-control" formControlName="deskType">
+                        <option value="Standard">Standard</option>
+                        <option value="Hot Desk">Hot Desk</option>
+                        <option value="Dedicated Desk">Dedicated Desk</option>
+                        <option value="Standing Desk">Standing Desk</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Desk Image</label>
+                    <input type="file" class="form-control" (change)="onDeskImageChange($event)" accept="image/*">
+                    <small class="text-muted">Upload an image for this desk</small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Equipment</label>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasMonitor">
+                          <label class="form-check-label">Monitor</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasKeyboard">
+                          <label class="form-check-label">Keyboard</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasMouse">
+                          <label class="form-check-label">Mouse</label>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasHeadset">
+                          <label class="form-check-label">Headset</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" formControlName="hasWebcam">
+                          <label class="form-check-label">Webcam</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" formControlName="description" rows="2"></textarea>
+                  </div>
+
+                  <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="deskForm.invalid || saving">
+                      {{ saving ? 'Saving...' : 'Save Desk' }}
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" (click)="cancelDeskForm()">
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            }
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

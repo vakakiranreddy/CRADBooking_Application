@@ -1,0 +1,109 @@
+<div class="desk-container">
+  <div class="page-header">
+    <h1>Available Desks</h1>
+    <p class="page-subtitle">Find and book the perfect workspace for your needs</p>
+  </div>
+
+  <div class="search-filters">
+    <div class="search-bar">
+      <div class="search-input-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search desks by name or location..." [(ngModel)]="searchTerm"
+          (input)="filterDesks()" class="search-input">
+      </div>
+    </div>
+
+    <div class="filter-controls">
+      <select [(ngModel)]="locationFilter" (change)="filterDesks()" class="filter-select">
+        <option value="">All Locations</option>
+        <option *ngFor="let location of locations" [value]="location.Name">{{location.Name}}, {{location.City}}</option>
+      </select>
+
+      <select [(ngModel)]="amenityFilter" (change)="filterDesks()" class="filter-select">
+        <option value="">All Amenities</option>
+        <option value="monitor">With Monitor</option>
+        <option value="window">Near Window</option>
+        <option value="keyboard">With Keyboard</option>
+      </select>
+
+      <button class="filter-btn" [class.active]="showAvailableOnly" (click)="toggleAvailableOnly()">
+        <span class="filter-icon">✅</span>
+        Available Only
+      </button>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Loading desks...</p>
+  </div>
+
+  <div *ngIf="!loading && filteredDesks.length === 0" class="empty-state">
+    <div class="empty-icon">🪑</div>
+    <h3>No desks found</h3>
+    <p>Try adjusting your search criteria or filters</p>
+    <button class="clear-filters-btn" (click)="clearFilters()">Clear Filters</button>
+  </div>
+
+  <div *ngIf="!loading && filteredDesks.length > 0" class="desks-grid">
+    <div *ngFor="let desk of filteredDesks" class="desk-card" [class.unavailable]="!isAvailable(desk)">
+      <div class="desk-image">
+        <div class="image-placeholder">🪑</div>
+        <div class="availability-badge" [class.available]="isAvailable(desk)">
+          {{isAvailable(desk) ? 'Available' : 'Occupied'}}
+        </div>
+      </div>
+
+      <div class="desk-content">
+        <div class="desk-header">
+          <h3>{{desk.DeskName}}</h3>
+          <span class="desk-id">#{{desk.DeskId}}</span>
+        </div>
+
+        <div class="desk-location">
+          <span class="location-icon">📍</span>
+          <span>{{desk.LocationName}}, {{desk.BuildingName}}</span>
+        </div>
+
+        <div class="desk-floor">
+          <span class="floor-icon">🏢</span>
+          <span>{{desk.FloorName}}</span>
+        </div>
+
+        <div class="desk-amenities">
+          <div class="amenity-item" *ngIf="desk.HasMonitor">
+            <span class="amenity-icon">🖥️</span>
+            <span>Monitor</span>
+          </div>
+          <div class="amenity-item" *ngIf="desk.HasKeyboard">
+            <span class="amenity-icon">⌨️</span>
+            <span>Keyboard</span>
+          </div>
+          <div class="amenity-item" *ngIf="desk.HasMouse">
+            <span class="amenity-icon">🖱️</span>
+            <span>Mouse</span>
+          </div>
+          <div class="amenity-item" *ngIf="desk.NearWindow">
+            <span class="amenity-icon">🪟</span>
+            <span>Window View</span>
+          </div>
+        </div>
+
+        <p *ngIf="desk.Description" class="desk-description">{{desk.Description}}</p>
+
+        <div class="desk-actions">
+          <button *ngIf="isAvailable(desk)" class="book-btn" (click)="bookDesk(desk)">
+            <span class="btn-icon">📅</span>
+            Book Desk
+          </button>
+          <button *ngIf="!isAvailable(desk)" class="unavailable-btn" disabled>
+            <span class="btn-icon">🚫</span>
+            Not Available
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

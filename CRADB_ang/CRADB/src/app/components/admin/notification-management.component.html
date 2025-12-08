@@ -1,0 +1,108 @@
+<div class="notification-management">
+  <div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+      <h2 class="h3 mb-1" style="font-weight: 600;">Notification Management</h2>
+      <p class="text-muted mb-0" style="font-size: 14px;">Send notifications and manage broadcast messages</p>
+    </div>
+    <div class="position-relative">
+      <div class="d-flex align-items-center gap-2" (click)="toggleProfileDropdown()" style="cursor: pointer;">
+        <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+          <span style="font-size: 14px;">{{ getUserInitials() }}</span>
+        </div>
+        <span style="font-size: 14px; font-weight: 500;">{{ getUserRole() }}</span>
+        <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+      </div>
+      
+      @if (showProfileDropdown) {
+        <div class="dropdown-menu show position-absolute" style="right: 0; top: 100%; margin-top: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          <a class="dropdown-item" routerLink="/profile" style="padding: 8px 16px;">
+            <i class="fas fa-user me-2"></i>Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()" style="padding: 8px 16px; cursor: pointer;">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Send Broadcast -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5><i class="fas fa-bullhorn me-2"></i>Send Broadcast</h5>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="sendBroadcast()">
+            <div class="mb-3">
+              <label class="form-label">Target Audience</label>
+              <select class="form-control" [(ngModel)]="broadcastForm.TargetAudience" name="audience" required>
+                <option value="All">All Users</option>
+                <option value="Employees">Employees Only</option>
+                <option value="Admins">Admins Only</option>
+              </select>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Location (Optional)</label>
+              <select class="form-control" [(ngModel)]="broadcastForm.LocationId" name="location">
+                <option [value]="undefined">All Locations</option>
+                <option *ngFor="let location of locations" [value]="location.LocationId">
+                  {{location.Name}}
+                </option>
+              </select>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-control" [(ngModel)]="broadcastForm.Title" name="title" required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="4" [(ngModel)]="broadcastForm.Message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" [disabled]="sending">
+              <i class="fas fa-paper-plane me-2"></i>
+              {{sending ? 'Sending...' : 'Send Broadcast'}}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Broadcasts -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5><i class="fas fa-history me-2"></i>Recent Broadcasts</h5>
+        </div>
+        <div class="card-body">
+          <div *ngIf="broadcasts.length === 0" class="text-center text-muted">
+            No broadcasts sent yet
+          </div>
+          
+          <div *ngFor="let broadcast of broadcasts" class="broadcast-item">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h6 class="mb-1">{{broadcast.Title}}</h6>
+                <p class="mb-1 small">{{broadcast.Message}}</p>
+                <small class="text-muted">
+                  To: {{broadcast.TargetAudience}} 
+                  <span *ngIf="broadcast.LocationName">at {{broadcast.LocationName}}</span>
+                </small>
+              </div>
+              <small class="text-muted">{{formatDate(broadcast.CreatedAt)}}</small>
+            </div>
+            <hr class="my-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

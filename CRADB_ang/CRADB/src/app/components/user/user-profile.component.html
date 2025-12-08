@@ -1,0 +1,87 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h1>User Profile</h1>
+    <button class="edit-btn" (click)="toggleEdit()">{{isEditing ? 'Save' : 'Edit'}}</button>
+  </div>
+
+  <div class="profile-card">
+    <div class="cover-image"></div>
+    <div class="profile-avatar">
+      <div class="avatar-circle" *ngIf="!currentUser?.ProfileImage && !imagePreview">
+        {{getUserInitials()}}
+      </div>
+      <img *ngIf="imagePreview || currentUser?.ProfileImage" [src]="getProfileImageUrl()" class="avatar-image"
+        alt="Profile Avatar">
+
+      <div class="avatar-overlay" (click)="fileInput.click()">
+        <i class="fas fa-camera"></i>
+      </div>
+      <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+    </div>
+
+    <div class="profile-content">
+      <div class="profile-info">
+        <h2 class="user-name">{{currentUser?.FirstName}} {{currentUser?.LastName}}</h2>
+        <p class="user-title">{{currentUser?.JobTitle || 'Employee'}}</p>
+      </div>
+
+      <div class="info-sections">
+        <div class="info-section">
+          <h3>Contact Information</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Email</label>
+              <input *ngIf="isEditing" [(ngModel)]="userProfile.email" class="form-input">
+              <span *ngIf="!isEditing">{{userProfile.email}}</span>
+            </div>
+            <div class="info-item">
+              <label>Phone</label>
+              <input *ngIf="isEditing" [(ngModel)]="userProfile.phone" class="form-input">
+              <span *ngIf="!isEditing">{{userProfile.phone}}</span>
+            </div>
+            <div class="info-item">
+              <label>Department</label>
+              <input *ngIf="isEditing" [(ngModel)]="userProfile.department" class="form-input">
+              <span *ngIf="!isEditing">{{userProfile.department}}</span>
+            </div>
+            <div class="info-item">
+              <label>Location</label>
+              <input *ngIf="isEditing" [(ngModel)]="userProfile.location" class="form-input">
+              <span *ngIf="!isEditing">{{userProfile.location}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3>Preferences</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Notification Preferences</label>
+              <select *ngIf="isEditing" [(ngModel)]="userProfile.notifications" class="form-input">
+                <option value="all">All Notifications</option>
+                <option value="important">Important Only</option>
+                <option value="none">None</option>
+              </select>
+              <span *ngIf="!isEditing">{{userProfile.notifications}}</span>
+            </div>
+            <div class="info-item">
+              <label>Default Booking Duration</label>
+              <select *ngIf="isEditing" [(ngModel)]="userProfile.defaultDuration" class="form-input">
+                <option value="30">30 minutes</option>
+                <option value="60">1 hour</option>
+                <option value="120">2 hours</option>
+              </select>
+              <span *ngIf="!isEditing">{{userProfile.defaultDuration}} minutes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <button class="action-btn primary" (click)="viewBookings()">View My Bookings</button>
+        <button class="action-btn secondary" (click)="bookRoom()">Book a Room</button>
+        <button class="action-btn secondary" (click)="viewEvents()">View Events</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="events-container">
+  <div class="header">
+    <h1>Events</h1>
+    <div class="location-selector">
+      <span>Rattha Tek Meadows, Chennai</span>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="loading" class="loading">Loading events...</div>
+  <div *ngIf="!loading && filteredEvents.length === 0" class="no-events">
+    No events found.
+  </div>
+
+  <div class="events-grid" *ngIf="!loading">
+    <div *ngFor="let event of filteredEvents" class="event-card">
+      <div class="event-image">
+        <img [src]="getEventImage(event)" [alt]="event.EventTitle">
+        <div class="event-status" [class]="getEventStatusClass(event)">{{getEventStatus(event)}}</div>
+      </div>
+      <div class="event-info">
+        <h3>{{event.EventTitle}}</h3>
+        <p class="event-description" *ngIf="event.Description">{{event.Description}}</p>
+        <p class="event-date">{{formatEventDate(event.Date)}} {{formatTime(event.StartTime)}} -
+          {{formatTime(event.EndTime)}}</p>
+        <p class="event-location" *ngIf="event.LocationName">📍 {{event.LocationName}}</p>
+
+        <div class="rsvp-section" *ngIf="isUpcoming(event)">
+          <p class="rsvp-label">Will you attend?</p>
+          <div class="rsvp-buttons">
+            <button class="rsvp-btn interested" [class.active]="getUserRsvpStatus(event.EventId) === 'Yes'"
+              (click)="rsvp(event.EventId, RsvpStatus.Yes)">
+              👍 Yes
+            </button>
+            <button class="rsvp-btn maybe" [class.active]="getUserRsvpStatus(event.EventId) === 'Maybe'"
+              (click)="rsvp(event.EventId, RsvpStatus.Maybe)">
+              🤔 Maybe
+            </button>
+            <button class="rsvp-btn not-interested" [class.active]="getUserRsvpStatus(event.EventId) === 'No'"
+              (click)="rsvp(event.EventId, RsvpStatus.No)">
+              👎 No
+            </button>
+          </div>
+        </div>
+
+
+
+        <button class="view-details-btn" (click)="viewEventDetails(event.EventId)">
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

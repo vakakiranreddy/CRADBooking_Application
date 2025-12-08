@@ -1,0 +1,57 @@
+.notification-management {
+  padding: 2rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.card-header {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.broadcast-item {
+  margin-bottom: 1rem;
+}
+
+.broadcast-item:last-child hr {
+  display: none;
+}
+
+.stat-item {
+  padding: 1rem;
+}
+
+.stat-item h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-control:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+}
+
+.btn-primary {
+  background: #6366f1;
+  border-color: #6366f1;
+}
+
+.btn-primary:hover {
+  background: #5856eb;
+  border-color: #5856eb;
+}

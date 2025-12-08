@@ -1,0 +1,151 @@
+.broadcast-management {
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-control {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.form-control[multiple] {
+  height: 120px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.actions-section {
+  margin-bottom: 1rem;
+}
+
+.broadcasts-table {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 100px 150px;
+  gap: 0.5rem;
+}
+
+.table-header {
+  display: contents;
+  font-weight: bold;
+}
+
+.table-header span {
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+}
+
+.table-row {
+  display: contents;
+}
+
+.table-row span {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+}
+
+.status {
+  font-weight: bold;
+  text-align: center;
+}
+
+.status.pending {
+  color: #ffc107;
+}
+
+.status.sent {
+  color: #28a745;
+}
+
+.status.failed {
+  color: #dc3545;
+}
+
+.actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.btn-primary, .btn-edit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.loading, .no-data {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}

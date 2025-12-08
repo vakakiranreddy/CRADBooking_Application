@@ -1,0 +1,204 @@
+<div class="sidebar d-none d-lg-flex flex-column">
+  <div class="sidebar-header">
+    <div class="logo-container">
+      <img src="https://avatars.githubusercontent.com/u/46455373?s=280&v=4" alt="Kanini Logo" class="logo-img">
+      <div class="logo-text">
+        <span class="company-name">Kanini</span>
+        <span class="app-name">Workspace</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-body">
+    <ul class="nav flex-column">
+      <!-- Admin Menu -->
+      <ng-container *ngIf="isAdmin">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">
+            <i class="fas fa-th-large nav-icon"></i>
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/employees" routerLinkActive="active">
+            <i class="fas fa-users nav-icon"></i>
+            <span class="nav-text">Employees</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/departments" routerLinkActive="active">
+            <i class="fas fa-building nav-icon"></i>
+            <span class="nav-text">Departments</span>
+          </a>
+        </li>
+
+        <!-- Booking Dropdown -->
+        <li class="nav-item position-relative">
+          <a class="nav-link clickable" (click)="toggleBookingDropdown(); $event.stopPropagation()"
+            [class.active]="showBookingDropdown">
+            <i class="fas fa-bookmark nav-icon"></i>
+            <span class="nav-text">Bookings</span>
+            <i class="fas fa-chevron-down ms-auto arrow-icon" [class.rotate]="showBookingDropdown"></i>
+          </a>
+          <div class="booking-submenu" [class.show]="showBookingDropdown">
+            <a [routerLink]="['/admin/bookings']" [queryParams]="{type: 'room'}" class="submenu-item"
+              routerLinkActive="active">
+              <span class="dot"></span>Room Bookings
+            </a>
+            <a [routerLink]="['/admin/bookings']" [queryParams]="{type: 'desk'}" class="submenu-item"
+              routerLinkActive="active">
+              <span class="dot"></span>Desk Bookings
+            </a>
+            <a [routerLink]="['/admin/bookings']" [queryParams]="{type: 'my'}" class="submenu-item"
+              routerLinkActive="active">
+              <span class="dot"></span>My Bookings
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/calendar" routerLinkActive="active">
+            <i class="fas fa-calendar-alt nav-icon"></i>
+            <span class="nav-text">Calendar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/events" routerLinkActive="active">
+            <i class="fas fa-bullhorn nav-icon"></i>
+            <span class="nav-text">Events</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/notifications" routerLinkActive="active">
+            <i class="fas fa-bell nav-icon"></i>
+            <span class="nav-text">Notifications</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/locations" routerLinkActive="active">
+            <i class="fas fa-map-marker-alt nav-icon"></i>
+            <span class="nav-text">Locations</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/resources" routerLinkActive="active">
+            <i class="fas fa-cube nav-icon"></i>
+            <span class="nav-text">Resources</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/rooms" routerLinkActive="active">
+            <i class="fas fa-door-open nav-icon"></i>
+            <span class="nav-text">Rooms</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/desks" routerLinkActive="active">
+            <i class="fas fa-desktop nav-icon"></i>
+            <span class="nav-text">Desks</span>
+          </a>
+        </li>
+      </ng-container>
+
+      <!-- User Menu -->
+      <ng-container *ngIf="!isAdmin">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/rooms" routerLinkActive="active">
+            <i class="fas fa-door-open nav-icon"></i>
+            <span class="nav-text">Book Room</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/desks" routerLinkActive="active">
+            <i class="fas fa-desktop nav-icon"></i>
+            <span class="nav-text">Book Desk</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/bookings" routerLinkActive="active">
+            <i class="fas fa-bookmark nav-icon"></i>
+            <span class="nav-text">My Bookings</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/calendar" routerLinkActive="active">
+            <i class="fas fa-calendar-alt nav-icon"></i>
+            <span class="nav-text">Calendar</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/events" routerLinkActive="active">
+            <i class="fas fa-bullhorn nav-icon"></i>
+            <span class="nav-text">Events</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/notifications" routerLinkActive="active">
+            <i class="fas fa-bell nav-icon"></i>
+            <span class="nav-text">Notifications</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile" routerLinkActive="active">
+            <i class="fas fa-user nav-icon"></i>
+            <span class="nav-text">Profile</span>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="sidebar-footer">
+    <a class="nav-link mb-3" href="#">
+      <i class="fas fa-sign-out-alt nav-icon"></i>
+      <span class="nav-text">Logout</span>
+    </a>
+  </div>
+</div>
+
+<!-- Mobile Offcanvas -->
+<div class="offcanvas-backdrop fade show" *ngIf="mobileOpen" (click)="close()"></div>
+<div class="offcanvas offcanvas-start d-lg-none" [class.show]="mobileOpen" tabindex="-1" id="sidebarOffcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title company-name">Kanini Workspace</h5>
+    <button type="button" class="btn-close" (click)="close()"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+      <!-- Admin Mobile Menu -->
+      <ng-container *ngIf="isAdmin">
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard" (click)="close()"><i class="fas fa-th-large me-2"></i>Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/employees" (click)="close()"><i class="fas fa-users me-2"></i>Employees</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/departments" (click)="close()"><i class="fas fa-building me-2"></i>Departments</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/bookings" (click)="close()"><i class="fas fa-bookmark me-2"></i>Bookings</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/calendar" (click)="close()"><i class="fas fa-calendar-alt me-2"></i>Calendar</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/events" (click)="close()"><i class="fas fa-bullhorn me-2"></i>Events</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/notifications" (click)="close()"><i class="fas fa-bell me-2"></i>Notifications</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/locations" (click)="close()"><i class="fas fa-map-marker-alt me-2"></i>Locations</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/resources" (click)="close()"><i class="fas fa-cube me-2"></i>Resources</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/rooms" (click)="close()"><i class="fas fa-door-open me-2"></i>Rooms</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/desks" (click)="close()"><i class="fas fa-desktop me-2"></i>Desks</a></li>
+      </ng-container>
+
+      <!-- User Mobile Menu -->
+      <ng-container *ngIf="!isAdmin">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard" (click)="close()"><i class="fas fa-home me-2"></i>Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/rooms" (click)="close()"><i class="fas fa-door-open me-2"></i>Book Room</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/desks" (click)="close()"><i class="fas fa-desktop me-2"></i>Book Desk</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/bookings" (click)="close()"><i class="fas fa-bookmark me-2"></i>My Bookings</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/calendar" (click)="close()"><i class="fas fa-calendar-alt me-2"></i>Calendar</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/events" (click)="close()"><i class="fas fa-bullhorn me-2"></i>Events</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/notifications" (click)="close()"><i class="fas fa-bell me-2"></i>Notifications</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/profile" (click)="close()"><i class="fas fa-user me-2"></i>Profile</a></li>
+      </ng-container>
+
+      <li class="nav-item"><a class="nav-link" href="#" (click)="close()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+    </ul>
+  </div>
+</div>

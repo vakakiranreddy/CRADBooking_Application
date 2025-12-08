@@ -1,0 +1,86 @@
+<div class="room-booking-container">
+  <div class="header">
+    <h1>Book a room</h1>
+    <p>Book a conference room at any kanini location</p>
+  </div>
+
+  <div class="search-filters">
+    <div class="filter-group">
+      <label>Location</label>
+      <select [(ngModel)]="selectedLocation" (change)="onLocationChange()">
+        <option value="">Select Location</option>
+        <option *ngFor="let location of locations" [value]="location.LocationId">{{location.Name}}, {{location.City}}
+        </option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Employees</label>
+      <select [(ngModel)]="employeeCount">
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <button class="search-btn" (click)="searchRooms()">Search</button>
+    <button class="refresh-btn" (click)="refreshData()">🔄 Refresh</button>
+  </div>
+
+  <div class="rooms-grid" *ngIf="!loading">
+    <div *ngFor="let room of rooms" class="room-card">
+      <div class="room-image">
+        <img [src]="getRoomImage(room)" [alt]="room.RoomName">
+      </div>
+      <div class="room-info">
+        <div class="room-header">
+          <span class="room-type">Conference Room</span>
+          <span class="location-badge">{{getLocationName(room.LocationId)}}</span>
+        </div>
+        <h3>{{room.RoomName}}</h3>
+        <div class="room-amenities">
+          <span class="amenity" *ngIf="room.Capacity">👥 {{room.Capacity}}</span>
+          <span class="amenity" *ngIf="room.HasTV">📺 TV</span>
+          <span class="amenity" *ngIf="room.HasWhiteboard">📝 Whiteboard</span>
+        </div>
+        <button class="book-btn" (click)="openBookingModal(room)">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading">Loading rooms...</div>
+</div>
+
+<!-- Booking Modal -->
+<div *ngIf="showBookingModal" class="modal-overlay" (click)="closeBookingModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Book {{selectedRoom?.RoomName}}</h3>
+    <form (ngSubmit)="bookRoom()" #bookingForm="ngForm">
+      <div class="form-group">
+        <label>Meeting Name *</label>
+        <input type="text" [(ngModel)]="bookingData.meetingName" name="meetingName" required>
+      </div>
+      <div class="form-group">
+        <label>Start Time *</label>
+        <input type="datetime-local" [(ngModel)]="bookingData.startTime" name="startTime" required>
+      </div>
+      <div class="form-group">
+        <label>End Time *</label>
+        <input type="datetime-local" [(ngModel)]="bookingData.endTime" name="endTime" required>
+      </div>
+      <div class="form-group">
+        <label>Participants *</label>
+        <input type="number" [(ngModel)]="bookingData.participantCount" name="participantCount" min="1" readonly
+          required>
+      </div>
+      <div class="form-group">
+        <label>Purpose</label>
+        <textarea [(ngModel)]="bookingData.purpose" name="purpose" rows="3"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" (click)="closeBookingModal()">Cancel</button>
+        <button type="submit" [disabled]="!bookingForm.valid || bookingLoading">{{bookingLoading ? 'Booking...' : 'Book
+          Room'}}</button>
+      </div>
+    </form>
+  </div>
+</div>

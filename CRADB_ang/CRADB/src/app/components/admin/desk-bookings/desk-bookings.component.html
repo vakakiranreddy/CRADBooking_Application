@@ -1,0 +1,112 @@
+<app-sidebar></app-sidebar>
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-start mb-4" style="padding-top: 20px;">
+      <div>
+        <h2 class="h3 mb-1" style="font-weight: 600;">Desk Bookings</h2>
+        <p class="text-muted mb-0" style="font-size: 14px;">View and manage all desk bookings.</p>
+      </div>
+      <div class="position-relative">
+        <div class="d-flex align-items-center gap-2" (click)="toggleProfileDropdown()" style="cursor: pointer;">
+          <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+            <span style="font-size: 14px;">{{ getUserInitials() }}</span>
+          </div>
+          <span style="font-size: 14px; font-weight: 500;">{{ getUserRole() }}</span>
+          <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+        </div>
+        
+        @if (showProfileDropdown) {
+          <div class="dropdown-menu show position-absolute" style="right: 0; top: 100%; margin-top: 8px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            <a class="dropdown-item" routerLink="/profile" style="padding: 8px 16px;">
+              <i class="fas fa-user me-2"></i>Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()" style="padding: 8px 16px; cursor: pointer;">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Header with Dropdown -->
+    <div class="header-section">
+      <div class="booking-dropdown">
+        <button class="dropdown-toggle" (click)="toggleBookingDropdown()">
+          <i class="fas fa-bookmark me-2"></i>
+          Booking
+          <i class="fas fa-chevron-down ms-2"></i>
+        </button>
+        <div class="dropdown-menu" [class.show]="showBookingDropdown">
+          <a routerLink="/admin/room-bookings" class="dropdown-item">Room Bookings</a>
+          <a routerLink="/admin/desk-bookings" class="dropdown-item active">Desk Bookings</a>
+          <a routerLink="/admin/my-bookings" class="dropdown-item">My Bookings</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-section">
+      <div class="d-flex align-items-center gap-3">
+        <span class="founding-text">Founding <span class="count">{{bookings.length}} Bookings</span></span>
+        <select class="form-select location-select" [(ngModel)]="selectedLocation">
+          <option value="">All Locations</option>
+          <option *ngFor="let location of locations" [value]="location.LocationId">{{location.Name}}</option>
+        </select>
+        <select class="form-select date-select" [(ngModel)]="selectedDate">
+          <option value="Today">Today</option>
+          <option value="Tomorrow">Tomorrow</option>
+          <option value="This Week">This Week</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Desk Bookings List -->
+    <div *ngIf="loading" class="loading-state">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div *ngIf="!loading" class="bookings-list">
+      <div *ngFor="let booking of bookings" class="desk-booking-card">
+        <div class="employee-avatar">
+          <div class="avatar-circle">
+            {{booking.UserName?.charAt(0) || 'U'}}
+          </div>
+        </div>
+        <div class="booking-content">
+          <div class="employee-details">
+            <h6 class="employee-name">{{booking.ResourceName || 'Desk'}} - {{booking.UserName || 'Unknown User'}}</h6>
+            <p class="employee-role">Senior Associate</p>
+          </div>
+          <div class="booking-info">
+            <div class="booking-id">
+              <i class="fas fa-bookmark me-2"></i>
+              <span>Booking id #{{booking.BookingId}}</span>
+            </div>
+            <div class="location-info">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              <span>{{booking.LocationName || 'Office'}}</span>
+            </div>
+            <div class="date-info">
+              <i class="fas fa-calendar me-2"></i>
+              <span>{{formatDate(booking.StartTime)}}</span>
+            </div>
+            <div class="time-info">
+              <i class="fas fa-clock me-2"></i>
+              <span>{{formatTime(booking.StartTime)}} - {{formatTime(booking.EndTime)}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && bookings.length === 0" class="no-bookings">
+      <i class="fas fa-desktop fa-3x text-muted mb-3"></i>
+      <h5>No desk bookings found</h5>
+      <p class="text-muted">There are no desk bookings to display</p>
+    </div>
+  </div>
+</div>

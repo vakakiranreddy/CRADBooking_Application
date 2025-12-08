@@ -1,0 +1,225 @@
+<div class="container-fluid">
+  <!-- Header Section -->
+  <div class="admin-header">
+    <div class="header-left">
+      <h2 class="page-title">Location Management</h2>
+      <p class="page-subtitle">Manage locations, buildings, and floors across all facilities.</p>
+    </div>
+    <div class="profile-section">
+      <div class="profile-trigger" (click)="toggleProfileDropdown()">
+        <div class="profile-avatar">
+          <span>{{ getUserInitials() }}</span>
+        </div>
+        <span class="profile-name">{{ getUserRole() }}</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+
+      @if (showProfileDropdown) {
+      <div class="profile-dropdown">
+        <a class="dropdown-item" routerLink="/profile">
+          <i class="fas fa-user"></i>Profile
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>Logout
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="row">
+      <!-- Locations Panel -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Locations</h5>
+            <button class="btn btn-sm btn-primary" (click)="showAddLocationForm()">
+              <i class="fas fa-plus"></i> Add Location
+            </button>
+          </div>
+          <div class="card-body">
+            @if (loading) {
+            <div class="text-center">
+              <div class="spinner-border spinner-border-sm"></div>
+              <p class="mt-2">Loading...</p>
+            </div>
+            }
+            @if (!loading && locations.length === 0) {
+            <p class="text-muted">No locations found</p>
+            }
+            @for (location of locations; track location.LocationId) {
+            <div class="location-item" [class.active]="selectedLocation?.LocationId === location.LocationId"
+              (click)="selectLocation(location)">
+              <h6>{{ location.Name }}</h6>
+              <small class="text-muted">{{ location.City }}, {{ location.Country }}</small>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Location Form -->
+        @if (showLocationForm) {
+        <div class="card mt-3" id="locationFormSection">
+          <div class="card-header">
+            <h6>Add New Location</h6>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="locationForm" (ngSubmit)="saveLocation()">
+              <div class="mb-3">
+                <label class="form-label">Name *</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Address *</label>
+                <textarea class="form-control" formControlName="address" rows="2"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">City *</label>
+                <input type="text" class="form-control" formControlName="city">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">State *</label>
+                <input type="text" class="form-control" formControlName="state">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Country *</label>
+                <input type="text" class="form-control" formControlName="country">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Postal Code *</label>
+                <input type="text" class="form-control" formControlName="postalCode">
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-sm" [disabled]="locationForm.invalid || saving">
+                  {{ saving ? 'Saving...' : 'Save' }}
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="cancelLocationForm()">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        }
+      </div>
+
+      <!-- Buildings Panel -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Buildings</h5>
+            <button class="btn btn-sm btn-primary" [disabled]="!selectedLocation" (click)="showAddBuildingForm()">
+              <i class="fas fa-plus"></i> Add Building
+            </button>
+          </div>
+          <div class="card-body">
+            @if (!selectedLocation) {
+            <p class="text-muted">Select a location to view buildings</p>
+            }
+            @if (selectedLocation && buildings.length === 0) {
+            <p class="text-muted">No buildings found</p>
+            }
+            @for (building of buildings; track building.Id) {
+            <div class="building-item" [class.active]="selectedBuilding?.Id === building.Id"
+              (click)="selectBuilding(building)">
+              <h6>{{ building.Name }}</h6>
+              <small class="text-muted">{{ building.NumberOfFloors }} floors</small>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Building Form -->
+        @if (showBuildingForm && selectedLocation) {
+        <div class="card mt-3" id="buildingFormSection">
+          <div class="card-header">
+            <h6>Add Building to {{ selectedLocation.Name }}</h6>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="buildingForm" (ngSubmit)="saveBuilding()">
+              <div class="mb-3">
+                <label class="form-label">Name *</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Address *</label>
+                <textarea class="form-control" formControlName="address" rows="2"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Floor Count *</label>
+                <input type="number" class="form-control" formControlName="floorCount" min="1">
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-sm" [disabled]="buildingForm.invalid || saving">
+                  {{ saving ? 'Saving...' : 'Save' }}
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="cancelBuildingForm()">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        }
+      </div>
+
+      <!-- Floors Panel -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Floors</h5>
+            <button class="btn btn-sm btn-primary" [disabled]="!selectedBuilding" (click)="showAddFloorForm()">
+              <i class="fas fa-plus"></i> Add Floor
+            </button>
+          </div>
+          <div class="card-body">
+            @if (!selectedBuilding) {
+            <p class="text-muted">Select a building to view floors</p>
+            }
+            @if (selectedBuilding && floors.length === 0) {
+            <p class="text-muted">No floors found</p>
+            }
+            @for (floor of floors; track floor.Id) {
+            <div class="floor-item">
+              <h6>{{ floor.FloorName }}</h6>
+              <small class="text-muted">Floor {{ floor.FloorNumber }}</small>
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Floor Form -->
+        @if (showFloorForm && selectedBuilding) {
+        <div class="card mt-3" id="floorFormSection">
+          <div class="card-header">
+            <h6>Add Floor to {{ selectedBuilding.Name }}</h6>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="floorForm" (ngSubmit)="saveFloor()">
+              <div class="mb-3">
+                <label class="form-label">Floor Name *</label>
+                <input type="text" class="form-control" formControlName="name"
+                  placeholder="e.g., Ground Floor, 1st Floor">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Floor Number *</label>
+                <input type="number" class="form-control" formControlName="floorNumber" min="1">
+              </div>
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-sm" [disabled]="floorForm.invalid || saving">
+                  {{ saving ? 'Saving...' : 'Save' }}
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="cancelFloorForm()">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

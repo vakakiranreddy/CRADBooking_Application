@@ -1,0 +1,1299 @@
+
+> cradb@0.0.0 build
+> ng build
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [5.121 seconds] - 2025-12-07T14:03:17.740Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BookingListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/booking-list/booking-list.component.ts:12:26:
+[37m      12 │   imports: [CommonModule, [32mSidebarComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BroadcastManagementComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/broadcast-management/broadcast-management.component.ts:14:60:
+[37m      14 │ ...CommonModule, FormsModule, ReactiveFormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of DesksComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/desks/desks.component.ts:15:26:
+[37m      15 │   imports: [CommonModule, [32mSidebarComponent[37m, RouterModule, Reactive...
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of EmployeesComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/employees/employees.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of LocationsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of RoomsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/rooms/rooms.component.ts:15:74:
+[37m      15 │ ...RouterModule, ReactiveFormsModule, FormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of MyBookingsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/bookings/my-bookings.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:17:40:
+[37m      17 │ ...Module, RouterModule, [32mNavigationComponent[37m, UserNotificationsCom...
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DeskListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/desks/desk-list.component.ts:14:39:
+[37m      14 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserEventsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavbarComponent is not used within the template of MainLayoutComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/layout/main-layout.component.ts:11:40:
+[37m      11 │ ...: [CommonModule, RouterOutlet, [32mNavbarComponent[37m, SidebarComponent],
+         ╵                                   [32m~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of RoomListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/rooms/room-list.component.ts:16:39:
+[37m      16 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserProfileComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/user/user-profile.component.ts:12:39:
+[37m      12 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getInterestedCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:158:23:
+[37m      158 │       this.rsvpService.[32mgetInterestedCount[37m(eventId).subscribe({
+          ╵                        [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:159:15:
+[37m      159 │         next: ([32mresponse[37m) => {
+          ╵                [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getMaybeCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:167:23:
+[37m      167 │       this.rsvpService.[32mgetMaybeCount[37m(eventId).subscribe({
+          ╵                        [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:168:15:
+[37m      168 │         next: ([32mresponse[37m) => {
+          ╵                [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getNotInterestedCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:176:23:
+[37m      176 │       this.rsvpService.[32mgetNotInterestedCount[37m(eventId).subscribe({
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:177:15:
+[37m      177 │         next: ([32mresponse[37m) => {
+          ╵                [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getAllRsvpUsers' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:402:21:
+[37m      402 │     this.rsvpService.[32mgetAllRsvpUsers[37m(eventId).subscribe({
+          ╵                      [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'users' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:403:13:
+[37m      403 │       next: ([32musers[37m) => {
+          ╵              [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'error' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-management/event-management.component.ts:407:14:
+[37m      407 │       error: ([32merror[37m) => {
+          ╵               [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getRsvpsByEvent' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-rsvp-details.component.ts:92:21:
+[37m      92 │     this.rsvpService.[32mgetRsvpsByEvent[37m(eventId).subscribe({
+         ╵                      [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'rsvps' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-rsvp-details.component.ts:93:13:
+[37m      93 │       next: ([32mrsvps[37m) => {
+         ╵              [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'error' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/event-rsvp-details.component.ts:97:14:
+[37m      97 │       error: ([32merror[37m) => {
+         ╵               [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getUserRsvp' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:63:21:
+[37m      63 │     this.rsvpService.[32mgetUserRsvp[37m(eventId).subscribe({
+         ╵                      [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'rsvp' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:64:13:
+[37m      64 │       next: ([32mrsvp[37m) => {
+         ╵              [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getInterestedCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:80:21:
+[37m      80 │     this.rsvpService.[32mgetInterestedCount[37m(eventId).subscribe({
+         ╵                      [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:81:13:
+[37m      81 │       next: ([32mresponse[37m) => {
+         ╵              [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getMaybeCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:87:21:
+[37m      87 │     this.rsvpService.[32mgetMaybeCount[37m(eventId).subscribe({
+         ╵                      [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:88:13:
+[37m      88 │       next: ([32mresponse[37m) => {
+         ╵              [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getNotInterestedCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:94:21:
+[37m      94 │     this.rsvpService.[32mgetNotInterestedCount[37m(eventId).subscribe({
+         ╵                      [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/event-details.component.ts:95:13:
+[37m      95 │       next: ([32mresponse[37m) => {
+         ╵              [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getUserRsvp' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:74:23:
+[37m      74 │       this.rsvpService.[32mgetUserRsvp[37m(event.EventId).subscribe({
+         ╵                        [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'rsvp' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:75:15:
+[37m      75 │         next: ([32mrsvp[37m) => {
+         ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getInterestedCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:94:23:
+[37m      94 │       this.rsvpService.[32mgetInterestedCount[37m(eventId).subscribe({
+         ╵                        [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:95:15:
+[37m      95 │         next: ([32mresponse[37m) => {
+         ╵                [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getMaybeCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:101:23:
+[37m      101 │       this.rsvpService.[32mgetMaybeCount[37m(eventId).subscribe({
+          ╵                        [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:102:15:
+[37m      102 │         next: ([32mresponse[37m) => {
+          ╵                [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getNotInterestedCount' does not exist on type 'EventRsvpService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:108:23:
+[37m      108 │       this.rsvpService.[32mgetNotInterestedCount[37m(eventId).subscribe({
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'response' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:109:15:
+[37m      109 │         next: ([32mresponse[37m) => {
+          ╵                [32m~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'of'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:3:21:
+[37m      3 │ import { Observable, [32mof[37m } from 'rxjs';
+        ╵                      [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'catchError'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:4:9:
+[37m      4 │ import { [32mcatchError[37m } from 'rxjs/operators';
+        ╵          [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1068: Unexpected token. A constructor, method, accessor, or property was expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:69:0:
+[37m      69 │ [32mimport[37m { catchError, map } from 'rxjs/operators';
+         ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'catchError'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:69:9:
+[37m      69 │ import { [32mcatchError[37m, map } from 'rxjs/operators';
+         ╵          [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2300: Duplicate identifier 'of'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:70:9:
+[37m      70 │ import { [32mof[37m } from 'rxjs';
+         ╵          [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getUserRsvp'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:2:
+[37m      74 │   [32mgetUserRsvp[37m(eventId: number): Observable<RsvpResponseDto | null> {
+         ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'eventId'. Did you mean 'event'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:14:
+[37m      74 │   getUserRsvp([32meventId[37m: number): Observable<RsvpResponseDto | null> {
+         ╵               [32m~~~~~~~[0m
+
+  'event' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:38437:12:
+[37m      38437 │ declare var [32mevent[37m: Event | undefined;
+            ╵             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:21:
+[37m      74 │   getUserRsvp(eventId[32m:[37m number): Observable<RsvpResponseDto | null> {
+         ╵                      [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:23:
+[37m      74 │   getUserRsvp(eventId: [32mnumber[37m): Observable<RsvpResponseDto | null> {
+         ╵                        [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:30:
+[37m      74 │   getUserRsvp(eventId: number)[32m:[37m Observable<RsvpResponseDto | null> {
+         ╵                               [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2447: The '|' operator is not allowed for boolean types. Consider using '||' instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:32:
+[37m      74 │   getUserRsvp(eventId: number): [32mObservable<RsvpResponseDto | null> {[37m
+         ╵                                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'RsvpResponseDto' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:43:
+[37m      74 │   getUserRsvp(eventId: number): Observable<[32mRsvpResponseDto[37m | null> {
+         ╵                                            [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS18050: The value 'null' cannot be used here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:74:61:
+[37m      74 │   getUserRsvp(eventId: number): Observable<RsvpResponseDto | [32mnull[37m> {
+         ╵                                                              [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:75:11:
+[37m      75 │     return [32mthis[37m.http.get<RsvpResponseDto>(`${this.apiUrl}/user-rsv...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:75:11:
+[37m      75 │     return [32mthis[37m.http.get<RsvpResponseDto>(`${this.apiUrl}/user-rsv...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:75:45:
+[37m      75 │ ....http.get<RsvpResponseDto>(`${[32mthis[37m.apiUrl}/user-rsvp/${eventId}...
+         ╵                                  [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'eventId'. Did you mean 'event'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:75:70:
+[37m      75 │ ....get<RsvpResponseDto>(`${this.apiUrl}/user-rsvp/${[32meventId[37m}`).pipe(
+         ╵                                                      [32m~~~~~~~[0m
+
+  'event' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:38437:12:
+[37m      38437 │ declare var [32mevent[37m: Event | undefined;
+            ╵             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:82:5:
+[37m      82 │     )[32m;[37m
+         ╵      [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getRsvpsByEvent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:2:
+[37m      85 │   [32mgetRsvpsByEvent[37m(eventId: number): Observable<RsvpResponseDto[]> {
+         ╵   [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'eventId'. Did you mean 'event'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:18:
+[37m      85 │   getRsvpsByEvent([32meventId[37m: number): Observable<RsvpResponseDto[]> {
+         ╵                   [32m~~~~~~~[0m
+
+  'event' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:38437:12:
+[37m      38437 │ declare var [32mevent[37m: Event | undefined;
+            ╵             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:25:
+[37m      85 │   getRsvpsByEvent(eventId[32m:[37m number): Observable<RsvpResponseDto[]> {
+         ╵                          [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:27:
+[37m      85 │   getRsvpsByEvent(eventId: [32mnumber[37m): Observable<RsvpResponseDto[]> {
+         ╵                            [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:34:
+[37m      85 │   getRsvpsByEvent(eventId: number)[32m:[37m Observable<RsvpResponseDto[]> {
+         ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:36:
+[37m      85 │   getRsvpsByEvent(eventId: number): [32mObservable<RsvpResponseDto[]> {[37m
+         ╵                                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'RsvpResponseDto' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:47:
+[37m      85 │   getRsvpsByEvent(eventId: number): Observable<[32mRsvpResponseDto[37m[]> {
+         ╵                                                [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1011: An element access expression should take an argument.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:85:63:
+[37m      85 │   getRsvpsByEvent(eventId: number): Observable<RsvpResponseDto[[32m[37m]> {
+         ╵                                                                [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:86:11:
+[37m      86 │     return [32mthis[37m.http.get<RsvpResponseDto[]>(`${this.apiUrl}/event/...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:86:11:
+[37m      86 │     return [32mthis[37m.http.get<RsvpResponseDto[]>(`${this.apiUrl}/event/...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:86:47:
+[37m      86 │ ...is.http.get<RsvpResponseDto[]>(`${[32mthis[37m.apiUrl}/event/${eventId}`);
+         ╵                                      [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2552: Cannot find name 'eventId'. Did you mean 'event'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:86:68:
+[37m      86 │ ...is.http.get<RsvpResponseDto[]>(`${this.apiUrl}/event/${[32meventId[37m}`);
+         ╵                                                           [32m~~~~~~~[0m
+
+  'event' is declared here.
+
+    node_modules/typescript/lib/lib.dom.d.ts:38437:12:
+[37m      38437 │ declare var [32mevent[37m: Event | undefined;
+            ╵             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:86:78:
+[37m      86 │ ...is.http.get<RsvpResponseDto[]>(`${this.apiUrl}/event/${eventId}`)[32m;[37m
+         ╵                                                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getRsvpsByUser'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:2:
+[37m      89 │   [32mgetRsvpsByUser[37m(userId: number): Observable<RsvpResponseDto[]> {
+         ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'userId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:17:
+[37m      89 │   getRsvpsByUser([32muserId[37m: number): Observable<RsvpResponseDto[]> {
+         ╵                  [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:23:
+[37m      89 │   getRsvpsByUser(userId[32m:[37m number): Observable<RsvpResponseDto[]> {
+         ╵                        [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:25:
+[37m      89 │   getRsvpsByUser(userId: [32mnumber[37m): Observable<RsvpResponseDto[]> {
+         ╵                          [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:32:
+[37m      89 │   getRsvpsByUser(userId: number)[32m:[37m Observable<RsvpResponseDto[]> {
+         ╵                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:34:
+[37m      89 │   getRsvpsByUser(userId: number): [32mObservable<RsvpResponseDto[]> {[37m
+         ╵                                   [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'RsvpResponseDto' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:45:
+[37m      89 │   getRsvpsByUser(userId: number): Observable<[32mRsvpResponseDto[37m[]> {
+         ╵                                              [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1011: An element access expression should take an argument.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:89:61:
+[37m      89 │   getRsvpsByUser(userId: number): Observable<RsvpResponseDto[[32m[37m]> {
+         ╵                                                              [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:90:11:
+[37m      90 │     return [32mthis[37m.http.get<RsvpResponseDto[]>(`${this.apiUrl}/user/$...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:90:11:
+[37m      90 │     return [32mthis[37m.http.get<RsvpResponseDto[]>(`${this.apiUrl}/user/$...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:90:47:
+[37m      90 │ ...this.http.get<RsvpResponseDto[]>(`${[32mthis[37m.apiUrl}/user/${userId}`);
+         ╵                                        [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'userId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:90:67:
+[37m      90 │ ...this.http.get<RsvpResponseDto[]>(`${this.apiUrl}/user/${[32muserId[37m}`);
+         ╵                                                            [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:90:76:
+[37m      90 │ ...this.http.get<RsvpResponseDto[]>(`${this.apiUrl}/user/${userId}`)[32m;[37m
+         ╵                                                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getInterestedCount'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:2:
+[37m      93 │   [32mgetInterestedCount[37m(eventId: number): Observable<{eventId: number...
+         ╵   [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:21:
+[37m      93 │   getInterestedCount([32meventId[37m: number): Observable<{eventId: number...
+         ╵                      [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:28:
+[37m      93 │   getInterestedCount(eventId[32m:[37m number): Observable<{eventId: number...
+         ╵                             [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:30:
+[37m      93 │   getInterestedCount(eventId: [32mnumber[37m): Observable<{eventId: number...
+         ╵                               [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:37:
+[37m      93 │ ...nterestedCount(eventId: number)[32m:[37m Observable<{eventId: number, i...
+         ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '<' cannot be applied to types 'typeof Observable' and '{ eventId: any; interestedCount: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:39:
+[37m      93 │ ... number): [32mObservable<{eventId: number, interestedCount: number}[37m> {
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:39:
+[37m      93 │ ... number): [32mObservable<{eventId: number, interestedCount: number}> {[37m
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:60:
+[37m      93 │ ... number): Observable<{eventId: [32mnumber[37m, interestedCount: number}> {
+         ╵                                   [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:93:85:
+[37m      93 │ ... number): Observable<{eventId: number, interestedCount: [32mnumber[37m}> {
+         ╵                                                            [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:94:11:
+[37m      94 │     return [32mthis[37m.http.get<{eventId: number, interestedCount: number...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:94:11:
+[37m      94 │     return [32mthis[37m.http.get<{eventId: number, interestedCount: number...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:94:72:
+[37m      94 │ ... interestedCount: number}>(`${[32mthis[37m.apiUrl}/event/${eventId}/int...
+         ╵                                  [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:94:93:
+[37m      94 │ ...unt: number}>(`${this.apiUrl}/event/${[32meventId[37m}/interested/count`);
+         ╵                                          [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:94:120:
+[37m      94 │ ...unt: number}>(`${this.apiUrl}/event/${eventId}/interested/count`)[32m;[37m
+         ╵                                                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getNotInterestedCount'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:2:
+[37m      97 │   [32mgetNotInterestedCount[37m(eventId: number): Observable<{eventId: num...
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:24:
+[37m      97 │   getNotInterestedCount([32meventId[37m: number): Observable<{eventId: num...
+         ╵                         [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:31:
+[37m      97 │   getNotInterestedCount(eventId[32m:[37m number): Observable<{eventId: num...
+         ╵                                [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:33:
+[37m      97 │ ...tNotInterestedCount(eventId: [32mnumber[37m): Observable<{eventId: numb...
+         ╵                                 [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:40:
+[37m      97 │ ...nterestedCount(eventId: number)[32m:[37m Observable<{eventId: number, n...
+         ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '<' cannot be applied to types 'typeof Observable' and '{ eventId: any; notInterestedCount: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:42:
+[37m      97 │ ... number): [32mObservable<{eventId: number, notInterestedCount: numb[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:42:
+[37m      97 │ ... number): [32mObservable<{eventId: number, notInterestedCount: numb[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:63:
+[37m      97 │ ...umber): Observable<{eventId: [32mnumber[37m, notInterestedCount: number...
+         ╵                                 [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:97:91:
+[37m      97 │ ...mber): Observable<{eventId: number, notInterestedCount: [32mnumber[37m}> {
+         ╵                                                            [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:98:11:
+[37m      98 │     return [32mthis[37m.http.get<{eventId: number, notInterestedCount: num...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:98:11:
+[37m      98 │     return [32mthis[37m.http.get<{eventId: number, notInterestedCount: num...
+         ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:98:75:
+[37m      98 │ ...tInterestedCount: number}>(`${[32mthis[37m.apiUrl}/event/${eventId}/not...
+         ╵                                  [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:98:96:
+[37m      98 │ ... number}>(`${this.apiUrl}/event/${[32meventId[37m}/not-interested/count`);
+         ╵                                      [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:98:127:
+[37m      98 │ ... number}>(`${this.apiUrl}/event/${eventId}/not-interested/count`)[32m;[37m
+         ╵                                                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getMaybeCount'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:2:
+[37m      101 │   [32mgetMaybeCount[37m(eventId: number): Observable<{eventId: number, ma...
+          ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:16:
+[37m      101 │   getMaybeCount([32meventId[37m: number): Observable<{eventId: number, ma...
+          ╵                 [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:23:
+[37m      101 │   getMaybeCount(eventId[32m:[37m number): Observable<{eventId: number, ma...
+          ╵                        [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:25:
+[37m      101 │   getMaybeCount(eventId: [32mnumber[37m): Observable<{eventId: number, ma...
+          ╵                          [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:32:
+[37m      101 │   getMaybeCount(eventId: number)[32m:[37m Observable<{eventId: number, ma...
+          ╵                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '<' cannot be applied to types 'typeof Observable' and '{ eventId: any; maybeCount: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:34:
+[37m      101 │ ...tId: number): [32mObservable<{eventId: number, maybeCount: number}[37m> {
+          ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:34:
+[37m      101 │ ...tId: number): [32mObservable<{eventId: number, maybeCount: number}> {[37m
+          ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:55:
+[37m      101 │ ...tId: number): Observable<{eventId: [32mnumber[37m, maybeCount: number}> {
+          ╵                                       [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:101:75:
+[37m      101 │ ...tId: number): Observable<{eventId: number, maybeCount: [32mnumber[37m}> {
+          ╵                                                           [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:102:11:
+[37m      102 │     return [32mthis[37m.http.get<{eventId: number, maybeCount: number}>(`...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:102:11:
+[37m      102 │     return [32mthis[37m.http.get<{eventId: number, maybeCount: number}>(`...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:102:67:
+[37m      102 │ ...ber, maybeCount: number}>(`${[32mthis[37m.apiUrl}/event/${eventId}/may...
+          ╵                                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:102:88:
+[37m      102 │ ...beCount: number}>(`${this.apiUrl}/event/${[32meventId[37m}/maybe/count`);
+          ╵                                              [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:102:110:
+[37m      102 │ ...beCount: number}>(`${this.apiUrl}/event/${eventId}/maybe/count`)[32m;[37m
+          ╵                                                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getInterestedUsers'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:2:
+[37m      105 │   [32mgetInterestedUsers[37m(eventId: number): Observable<UserRsvpDetails...
+          ╵   [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:21:
+[37m      105 │   getInterestedUsers([32meventId[37m: number): Observable<UserRsvpDetails...
+          ╵                      [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:28:
+[37m      105 │   getInterestedUsers(eventId[32m:[37m number): Observable<UserRsvpDetails...
+          ╵                             [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:30:
+[37m      105 │   getInterestedUsers(eventId: [32mnumber[37m): Observable<UserRsvpDetails...
+          ╵                               [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:37:
+[37m      105 │ ...InterestedUsers(eventId: number)[32m:[37m Observable<UserRsvpDetails[]> {
+          ╵                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:39:
+[37m      105 │ ...InterestedUsers(eventId: number): [32mObservable<UserRsvpDetails[]> {[37m
+          ╵                                      [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'UserRsvpDetails' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:50:
+[37m      105 │ ...InterestedUsers(eventId: number): Observable<[32mUserRsvpDetails[37m[]> {
+          ╵                                                 [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1011: An element access expression should take an argument.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:105:66:
+[37m      105 │ ...InterestedUsers(eventId: number): Observable<UserRsvpDetails[[32m[37m]> {
+          ╵                                                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:106:11:
+[37m      106 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:106:11:
+[37m      106 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:106:47:
+[37m      106 │ ...tp.get<UserRsvpDetails[]>(`${[32mthis[37m.apiUrl}/event/${eventId}/int...
+          ╵                                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:106:68:
+[37m      106 │ ...vpDetails[]>(`${this.apiUrl}/event/${[32meventId[37m}/interested/users`);
+          ╵                                         [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:106:95:
+[37m      106 │ ...vpDetails[]>(`${this.apiUrl}/event/${eventId}/interested/users`)[32m;[37m
+          ╵                                                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getMaybeUsers'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:2:
+[37m      109 │   [32mgetMaybeUsers[37m(eventId: number): Observable<UserRsvpDetails[]> {
+          ╵   [32m~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:16:
+[37m      109 │   getMaybeUsers([32meventId[37m: number): Observable<UserRsvpDetails[]> {
+          ╵                 [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:23:
+[37m      109 │   getMaybeUsers(eventId[32m:[37m number): Observable<UserRsvpDetails[]> {
+          ╵                        [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:25:
+[37m      109 │   getMaybeUsers(eventId: [32mnumber[37m): Observable<UserRsvpDetails[]> {
+          ╵                          [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:32:
+[37m      109 │   getMaybeUsers(eventId: number)[32m:[37m Observable<UserRsvpDetails[]> {
+          ╵                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:34:
+[37m      109 │   getMaybeUsers(eventId: number): [32mObservable<UserRsvpDetails[]> {[37m
+          ╵                                   [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'UserRsvpDetails' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:45:
+[37m      109 │   getMaybeUsers(eventId: number): Observable<[32mUserRsvpDetails[37m[]> {
+          ╵                                              [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1011: An element access expression should take an argument.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:109:61:
+[37m      109 │   getMaybeUsers(eventId: number): Observable<UserRsvpDetails[[32m[37m]> {
+          ╵                                                              [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:110:11:
+[37m      110 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:110:11:
+[37m      110 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:110:47:
+[37m      110 │ ...tp.get<UserRsvpDetails[]>(`${[32mthis[37m.apiUrl}/event/${eventId}/may...
+          ╵                                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:110:68:
+[37m      110 │ ...serRsvpDetails[]>(`${this.apiUrl}/event/${[32meventId[37m}/maybe/users`);
+          ╵                                              [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:110:90:
+[37m      110 │ ...serRsvpDetails[]>(`${this.apiUrl}/event/${eventId}/maybe/users`)[32m;[37m
+          ╵                                                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getNotInterestedUsers'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:2:
+[37m      113 │   [32mgetNotInterestedUsers[37m(eventId: number): Observable<UserRsvpDeta...
+          ╵   [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:24:
+[37m      113 │   getNotInterestedUsers([32meventId[37m: number): Observable<UserRsvpDeta...
+          ╵                         [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:31:
+[37m      113 │   getNotInterestedUsers(eventId[32m:[37m number): Observable<UserRsvpDeta...
+          ╵                                [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:33:
+[37m      113 │ ...NotInterestedUsers(eventId: [32mnumber[37m): Observable<UserRsvpDetail...
+          ╵                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:40:
+[37m      113 │ ...InterestedUsers(eventId: number)[32m:[37m Observable<UserRsvpDetails[]> {
+          ╵                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:42:
+[37m      113 │ ...InterestedUsers(eventId: number): [32mObservable<UserRsvpDetails[]> {[37m
+          ╵                                      [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'UserRsvpDetails' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:53:
+[37m      113 │ ...InterestedUsers(eventId: number): Observable<[32mUserRsvpDetails[37m[]> {
+          ╵                                                 [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1011: An element access expression should take an argument.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:113:69:
+[37m      113 │ ...InterestedUsers(eventId: number): Observable<UserRsvpDetails[[32m[37m]> {
+          ╵                                                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:114:11:
+[37m      114 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:114:11:
+[37m      114 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:114:47:
+[37m      114 │ ...tp.get<UserRsvpDetails[]>(`${[32mthis[37m.apiUrl}/event/${eventId}/not...
+          ╵                                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:114:68:
+[37m      114 │ ...tails[]>(`${this.apiUrl}/event/${[32meventId[37m}/not-interested/users`);
+          ╵                                     [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:114:99:
+[37m      114 │ ...tails[]>(`${this.apiUrl}/event/${eventId}/not-interested/users`)[32m;[37m
+          ╵                                                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getAllRsvpUsers'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:2:
+[37m      117 │   [32mgetAllRsvpUsers[37m(eventId: number): Observable<UserRsvpDetails[]> {
+          ╵   [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:18:
+[37m      117 │   getAllRsvpUsers([32meventId[37m: number): Observable<UserRsvpDetails[]> {
+          ╵                   [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:25:
+[37m      117 │   getAllRsvpUsers(eventId[32m:[37m number): Observable<UserRsvpDetails[]> {
+          ╵                          [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:27:
+[37m      117 │   getAllRsvpUsers(eventId: [32mnumber[37m): Observable<UserRsvpDetails[]> {
+          ╵                            [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:34:
+[37m      117 │   getAllRsvpUsers(eventId: number)[32m:[37m Observable<UserRsvpDetails[]> {
+          ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2365: Operator '>' cannot be applied to types 'boolean' and '{ return: any; }'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:36:
+[37m      117 │   getAllRsvpUsers(eventId: number): [32mObservable<UserRsvpDetails[]> {[37m
+          ╵                                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'UserRsvpDetails' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:47:
+[37m      117 │   getAllRsvpUsers(eventId: number): Observable<[32mUserRsvpDetails[37m[]> {
+          ╵                                                [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1011: An element access expression should take an argument.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:117:63:
+[37m      117 │   getAllRsvpUsers(eventId: number): Observable<UserRsvpDetails[[32m[37m]> {
+          ╵                                                                [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ':' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:118:11:
+[37m      118 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:118:11:
+[37m      118 │     return [32mthis[37m.http.get<UserRsvpDetails[]>(`${this.apiUrl}/event...
+          ╵            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:118:47:
+[37m      118 │ ...tp.get<UserRsvpDetails[]>(`${[32mthis[37m.apiUrl}/event/${eventId}/all...
+          ╵                                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'eventId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:118:68:
+[37m      118 │ ...<UserRsvpDetails[]>(`${this.apiUrl}/event/${[32meventId[37m}/all/users`);
+          ╵                                                [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:118:88:
+[37m      118 │ ...<UserRsvpDetails[]>(`${this.apiUrl}/event/${eventId}/all/users`)[32m;[37m
+          ╵                                                                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1128: Declaration or statement expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/services/event-rsvp.service.ts:120:0:
+[37m      120 │ [32m}[37m
+          ╵ [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mUnexpected "]"[0m
+
+    src/app/services/event-rsvp.service.ts:74:29:
+[37m      74 │ Observable < RsvpResponseDto[[32m][37m > {
+         ╵                              [32m^[0m
+
+[39m[22m

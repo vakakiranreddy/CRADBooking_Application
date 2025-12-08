@@ -1,0 +1,82 @@
+
+> cradb@0.0.0 build
+> ng build
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [4.411 seconds] - 2025-12-07T07:45:01.112Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of DesksComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/desks/desks.component.ts:15:26:
+[37m      15 │   imports: [CommonModule, [32mSidebarComponent[37m, RouterModule, Reactive...
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of EmployeesComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/employees/employees.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of LocationsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of RoomsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/rooms/rooms.component.ts:15:74:
+[37m      15 │ ...RouterModule, ReactiveFormsModule, FormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:17:40:
+[37m      17 │ ...Module, RouterModule, [32mNavigationComponent[37m, UserNotificationsCom...
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/employees/employees.component.html:240:0:
+[37m      240 │ [32m</div>[37m
+          ╵ [32m~~~~~~[0m
+
+  Error occurs in the template of component EmployeesComponent.
+
+    src/app/components/admin/employees/employees.component.ts:17:15:
+[37m      17 │   templateUrl: [32m'./employees.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.html:226:0:
+[37m      226 │ [32m</div>[37m
+          ╵ [32m~~~~~~[0m
+
+  Error occurs in the template of component LocationsComponent.
+
+    src/app/components/admin/locations/locations.component.ts:17:15:
+[37m      17 │   templateUrl: [32m'./locations.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.html:227:0:
+[37m      227 │ [32m</div>[37m
+          ╵ [32m~~~~~~[0m
+
+  Error occurs in the template of component LocationsComponent.
+
+    src/app/components/admin/locations/locations.component.ts:17:15:
+[37m      17 │   templateUrl: [32m'./locations.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m

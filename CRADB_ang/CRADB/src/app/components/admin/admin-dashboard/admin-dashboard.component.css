@@ -1,0 +1,46 @@
+/* .dashboard-container removed - handled by main layout */
+
+.card {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.table th {
+  border-top: none;
+  font-weight: 600;
+}
+
+.calendar-day {
+  color: #333;
+}
+
+.calendar-day.current-day {
+  background: #5b7cfa !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.calendar-day.other-month {
+  color: #ccc;
+}
+
+.calendar-day:hover:not(.current-day) {
+  background: #f5f5f5;
+}
+
+.calendar-day.has-event {
+  background: #f0f4ff;
+}
+
+.calendar-day.has-booking {
+  background: #f0fdf4;
+}
+
+.calendar-day.has-event.has-booking {
+  background: linear-gradient(135deg, #f0f4ff 50%, #f0fdf4 50%);
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+}

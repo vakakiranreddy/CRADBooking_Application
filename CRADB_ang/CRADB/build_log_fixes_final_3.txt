@@ -1,0 +1,133 @@
+
+> cradb@0.0.0 build
+> ng build
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [5.348 seconds] - 2025-12-07T12:41:18.299Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BookingListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/booking-list/booking-list.component.ts:12:26:
+[37m      12 │   imports: [CommonModule, [32mSidebarComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BroadcastManagementComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/broadcast-management/broadcast-management.component.ts:14:60:
+[37m      14 │ ...CommonModule, FormsModule, ReactiveFormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of DesksComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/desks/desks.component.ts:15:26:
+[37m      15 │   imports: [CommonModule, [32mSidebarComponent[37m, RouterModule, Reactive...
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of EmployeesComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/employees/employees.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of LocationsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of RoomsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/rooms/rooms.component.ts:15:74:
+[37m      15 │ ...RouterModule, ReactiveFormsModule, FormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of MyBookingsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/bookings/my-bookings.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:17:40:
+[37m      17 │ ...Module, RouterModule, [32mNavigationComponent[37m, UserNotificationsCom...
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DeskListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/desks/desk-list.component.ts:14:39:
+[37m      14 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserEventsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavbarComponent is not used within the template of MainLayoutComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/layout/main-layout.component.ts:11:40:
+[37m      11 │ ...: [CommonModule, RouterOutlet, [32mNavbarComponent[37m, SidebarComponent],
+         ╵                                   [32m~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of RoomListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/rooms/room-list.component.ts:16:39:
+[37m      16 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserProfileComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/user/user-profile.component.ts:10:39:
+[37m      10 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDuplicate member "loadBookingsData" in class body[0m [duplicate-class-member]
+
+    src/app/components/dashboard/dashboard.component.ts:213:4:
+[37m      213 │     [32mloadBookingsData[37m(): void {
+          ╵     [32m~~~~~~~~~~~~~~~~[0m
+
+  The original member "loadBookingsData" is here:
+
+    src/app/components/dashboard/dashboard.component.ts:128:4:
+[37m      128 │     [32mloadBookingsData[37m(): void {
+          ╵     [32m~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2393: Duplicate function implementation.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:45:2:
+[37m      45 │   [32mloadBookingsData[37m(): void {
+         ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2393: Duplicate function implementation.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:142:2:
+[37m      142 │   [32mloadBookingsData[37m(): void {
+          ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'cdr' does not exist on type 'UserEventsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:61:13:
+[37m      61 │         this.[32mcdr[37m.detectChanges();
+         ╵              [32m~~~[0m
+
+[39m[22m

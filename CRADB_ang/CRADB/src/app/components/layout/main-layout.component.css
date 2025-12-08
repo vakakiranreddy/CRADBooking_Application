@@ -1,0 +1,70 @@
+/* Main Content Wrapper */
+.admin-main-content {
+  min-height: 100vh;
+  background: #f8f9fa;
+  width: 100%;
+  transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Desktop View (Sidebar Visible) */
+@media (min-width: 992px) {
+  .admin-main-content {
+    margin-left: 260px; /* Matches sidebar width */
+    padding: 0;
+    width: calc(100% - 260px);
+  }
+
+  /* Hide mobile toggle on desktop */
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+/* Mobile View (Sidebar Hidden) */
+@media (max-width: 991.98px) {
+  .admin-main-content {
+    margin-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+/* Mobile Header for Toggle Button */
+.mobile-header {
+  background: white;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+@media (min-width: 992px) {
+  .mobile-header {
+    display: none;
+  }
+}
+
+.btn-toggle {
+  background: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #333;
+  cursor: pointer;
+}
+
+.btn-toggle:hover {
+  background: #f8f9fa;
+}
+
+.mobile-brand {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}

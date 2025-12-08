@@ -1,0 +1,139 @@
+
+> cradb@0.0.0 build
+> ng build
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m                            [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mmain-ZSVU2CGB.js[39m   [2m | [22m[2mmain[22m                             [2m | [22m[36m314.72 kB[39m[2m | [22m               [36m44.90 kB[39m
+[32mstyles-URFWRSAV.css[39m[2m | [22m[2mstyles[22m                           [2m | [22m[36m309.40 kB[39m[2m | [22m               [36m41.82 kB[39m
+[32mchunk-NUV5OMCP.js[39m  [2m | [22m[2m-[22m                                [2m | [22m[36m188.46 kB[39m[2m | [22m               [36m54.13 kB[39m
+[32mchunk-B4DA2KI3.js[39m  [2m | [22m[2m-[22m                                [2m | [22m [36m92.34 kB[39m[2m | [22m               [36m23.23 kB[39m
+[32mchunk-J4VRSIP6.js[39m  [2m | [22m[2m-[22m                                [2m | [22m [36m46.96 kB[39m[2m | [22m                [36m9.42 kB[39m
+[32mchunk-ZKICJLAJ.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m6.38 kB[39m[2m | [22m                [36m1.77 kB[39m
+[32mchunk-SDUSGAZY.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m4.12 kB[39m[2m | [22m                [36m1.46 kB[39m
+[32mchunk-6QZSF7CH.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m1.69 kB[39m[2m | [22m              [36m662 bytes[39m
+[32mchunk-K2GECZIF.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m1.47 kB[39m[2m | [22m              [36m528 bytes[39m
+[32mchunk-B2UAJPSB.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m1.30 kB[39m[2m | [22m              [36m407 bytes[39m
+[32mchunk-XXTKQE5B.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m1.18 kB[39m[2m | [22m              [36m463 bytes[39m
+[32mchunk-JCV7ZFFU.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m1.09 kB[39m[2m | [22m              [36m435 bytes[39m
+[32mchunk-HOWGXLIO.js[39m  [2m | [22m[2m-[22m                                [2m | [22m  [36m1.06 kB[39m[2m | [22m              [36m437 bytes[39m
+[32mchunk-IQDBBRVA.js[39m  [2m | [22m[2m-[22m                                [2m | [22m[36m663 bytes[39m[2m | [22m              [36m663 bytes[39m
+[32mchunk-L6SCK24A.js[39m  [2m | [22m[2m-[22m                                [2m | [22m[36m659 bytes[39m[2m | [22m              [36m659 bytes[39m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m                    [2m | [22m[1m[93m971.48 kB[39m[22m[2m | [22m              [1m180.98 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m                            [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-4UKX4VTR.js[39m  [2m | [22m[2mbroadcast-management-component[22m   [2m | [22m [36m15.73 kB[39m[2m | [22m                [36m4.13 kB[39m
+[32mchunk-KP2254RB.js[39m  [2m | [22m[2muser-profile-component[22m           [2m | [22m [36m12.36 kB[39m[2m | [22m                [36m3.18 kB[39m
+[32mchunk-RWEZS7BY.js[39m  [2m | [22m[2mevent-rsvp-details-component[22m     [2m | [22m [36m10.74 kB[39m[2m | [22m                [36m3.30 kB[39m
+[32mchunk-32KODKMP.js[39m  [2m | [22m[2mcalendar-component[22m               [2m | [22m  [36m9.82 kB[39m[2m | [22m                [36m2.89 kB[39m
+[32mchunk-5Y4LYS3R.js[39m  [2m | [22m[2mevent-details-component[22m          [2m | [22m  [36m8.93 kB[39m[2m | [22m                [36m2.70 kB[39m
+[32mchunk-IVOSEOZ5.js[39m  [2m | [22m[2mnotification-management-component[22m[2m | [22m  [36m8.36 kB[39m[2m | [22m                [36m2.63 kB[39m
+[32mchunk-MLSYSGGY.js[39m  [2m | [22m[2muser-management-component[22m        [2m | [22m  [36m8.21 kB[39m[2m | [22m                [36m2.62 kB[39m
+[32mchunk-NIFE6RKB.js[39m  [2m | [22m[2muser-notifications-component[22m     [2m | [22m[36m160 bytes[39m[2m | [22m              [36m160 bytes[39m
+
+Application bundle generation complete. [24.318 seconds] - 2025-12-07T13:35:26.101Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BookingListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/booking-list/booking-list.component.ts:12:26:
+[37m      12 │   imports: [CommonModule, [32mSidebarComponent[37m],
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of BroadcastManagementComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/broadcast-management/broadcast-management.component.ts:14:60:
+[37m      14 │ ...CommonModule, FormsModule, ReactiveFormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of DesksComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/desks/desks.component.ts:15:26:
+[37m      15 │   imports: [CommonModule, [32mSidebarComponent[37m, RouterModule, Reactive...
+         ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of EmployeesComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/employees/employees.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of LocationsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/locations/locations.component.ts:16:74:
+[37m      16 │ ...FormsModule, ReactiveFormsModule, RouterModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: SidebarComponent is not used within the template of RoomsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/admin/rooms/rooms.component.ts:15:74:
+[37m      15 │ ...RouterModule, ReactiveFormsModule, FormsModule, [32mSidebarComponent[37m],
+         ╵                                                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of MyBookingsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/bookings/my-bookings.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DashboardComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/dashboard/dashboard.component.ts:17:40:
+[37m      17 │ ...Module, RouterModule, [32mNavigationComponent[37m, UserNotificationsCom...
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of DeskListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/desks/desk-list.component.ts:14:39:
+[37m      14 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserEventsComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/events/user-events.component.ts:13:39:
+[37m      13 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavbarComponent is not used within the template of MainLayoutComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/layout/main-layout.component.ts:11:40:
+[37m      11 │ ...: [CommonModule, RouterOutlet, [32mNavbarComponent[37m, SidebarComponent],
+         ╵                                   [32m~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of RoomListComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/rooms/room-list.component.ts:16:39:
+[37m      16 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NavigationComponent is not used within the template of UserProfileComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/user/user-profile.component.ts:12:39:
+[37m      12 │   imports: [CommonModule, FormsModule, [32mNavigationComponent[37m],
+         ╵                                        [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mbundle initial exceeded maximum budget. Budget 500.00 kB was not met by 471.48 kB with a total of 971.48 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mModule 'toastify-js' used by 'src/app/components/user/user-profile.component.ts' is not ESM[0m
+
+  CommonJS or AMD dependencies can cause optimization bailouts.
+  For more information see: [4mhttps://angular.dev/tools/cli/build#configuring-commonjs-dependencies[0m
+
+[39m[22m
+Output location: D:\ConferenceRoomDeskBookingApp\CRADB_ang\CRADB\dist\CRADB
+
