@@ -1,51 +1,51 @@
 .my-bookings-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  padding-top: calc(64px + 2rem);
+  padding: 1.5rem;
+  padding-top: calc(64px + 1.5rem);
   background: #f8fafc;
   min-height: 100vh;
 }
 
 .page-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .page-header h1 {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #1e293b;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.375rem 0;
 }
 
 .page-subtitle {
   color: #64748b;
-  font-size: 1.1rem;
+  font-size: 0.9375rem;
   margin: 0;
 }
 
 .booking-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .stat-card {
   background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   transition: all 0.3s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card.active {
@@ -61,21 +61,21 @@
 }
 
 .stat-icon {
-  font-size: 2.5rem;
+  font-size: 2rem;
   opacity: 0.8;
 }
 
 .stat-content h3 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.25rem 0;
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
@@ -83,7 +83,7 @@
 
 .loading-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1.5rem;
 }
 
 .loading-spinner {
@@ -108,34 +108,34 @@
 
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3rem 1.5rem;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .empty-icon {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
   opacity: 0.5;
 }
 
 .empty-state h3 {
   color: #1e293b;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 0.5rem;
 }
 
 .empty-state p {
   color: #64748b;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .book-now-btn {
   background: #10b981;
   color: white;
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 0.625rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
@@ -149,53 +149,55 @@
 
 .bookings-section {
   background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .section-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #1e293b;
   margin: 0;
 }
 
 .status-filter {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.875rem;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border-radius: 6px;
   background: white;
   color: #374151;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
 }
 
 .bookings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
 }
 
 .booking-card {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 10px;
+  padding: 1rem;
   transition: all 0.3s ease;
 }
 
 .booking-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .booking-card.active {
@@ -218,29 +220,33 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .booking-title h4 {
   margin: 0 0 0.25rem 0;
   color: #1e293b;
-  font-size: 1.1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .booking-id {
   color: #64748b;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
 .status-badge {
-  padding: 0.375rem 0.75rem;
+  padding: 0.3rem 0.625rem;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .status-active {
@@ -264,45 +270,70 @@
 }
 
 .booking-details {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .detail-row {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.375rem;
 }
 
 .detail-icon {
-  font-size: 1rem;
+  font-size: 0.875rem;
   opacity: 0.7;
-  width: 20px;
+  width: 18px;
 }
 
 .detail-text {
   color: #475569;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
 }
 
 .booking-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.625rem;
   flex-wrap: wrap;
   border-top: 1px solid #e2e8f0;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
+}
+
+/* Vertical layout for below medium devices */
+@media (max-width: 767px) {
+  .booking-actions {
+    flex-direction: column;
+  }
+
+  .action-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Horizontal layout for medium and above devices */
+@media (min-width: 768px) {
+  .booking-actions {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .action-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  gap: 0.375rem;
+  padding: 0.625rem 0.875rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
   transition: all 0.2s;
 }
 
@@ -331,30 +362,30 @@
 }
 
 .btn-icon {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 .checkin-status {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
   border-top: 1px solid #e2e8f0;
 }
 
 .checkin-timeline {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.625rem;
 }
 
 .timeline-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
 }
 
 .timeline-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #10b981;
   flex-shrink: 0;
@@ -369,12 +400,12 @@
 .timeline-label {
   font-weight: 500;
   color: #1e293b;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
 }
 
 .timeline-time {
   color: #64748b;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 /* Toggle Switch Styling */
@@ -386,16 +417,16 @@
 .action-label {
   font-weight: 500;
   color: #374151;
-  font-size: 0.9rem;
-  margin-right: 1rem;
+  font-size: 0.8125rem;
+  margin-right: 0.75rem;
 }
 
 .toggle-switch {
   position: relative;
-  width: 60px;
-  height: 32px;
+  width: 56px;
+  height: 30px;
   background: #e5e7eb;
-  border-radius: 16px;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid #d1d5db;
@@ -424,8 +455,8 @@
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   background: white;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -436,11 +467,11 @@
 }
 
 .toggle-switch.checked-in .toggle-slider {
-  transform: translateX(28px);
+  transform: translateX(26px);
 }
 
 .toggle-switch.overdue .toggle-slider {
-  transform: translateX(28px);
+  transform: translateX(26px);
 }
 
 .toggle-switch.completed {
@@ -451,9 +482,55 @@
 }
 
 .toggle-switch.completed .toggle-slider {
-  transform: translateX(28px);
+  transform: translateX(26px);
 }
 
 .toggle-icon {
-  font-size: 0.7rem;
+  font-size: 0.625rem;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .my-bookings-container {
+    padding: 1rem;
+    padding-top: calc(64px + 1rem);
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .booking-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .bookings-section {
+    padding: 1rem;
+  }
+
+  .bookings-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-filter {
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .bookings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

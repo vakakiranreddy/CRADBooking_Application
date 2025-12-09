@@ -1,14 +1,15 @@
 .profile-avatar {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #333;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .avatar-image {
@@ -19,6 +20,13 @@
 
 .departments-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 576px) {
+  .departments-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }

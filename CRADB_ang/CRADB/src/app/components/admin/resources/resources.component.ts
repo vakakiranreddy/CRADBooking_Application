@@ -26,9 +26,16 @@ import { AuthResponse } from '../../../models/auth.models';
 })
 export class ResourcesComponent implements OnInit {
   resources: ResourceResponse[] = [];
+  filteredResources: ResourceResponse[] = [];
+  paginatedResources: ResourceResponse[] = [];
   locations: LocationResponse[] = [];
   buildings: BuildingResponse[] = [];
   floors: FloorResponse[] = [];
+  selectedLocationFilter = '';
+  
+  currentPage = 1;
+  itemsPerPage = 10;
+  totalPages = 1;
 
   selectedResource: ResourceResponse | null = null;
 
@@ -121,7 +128,9 @@ export class ResourcesComponent implements OnInit {
     this.dashboardService.getResourcePageData().subscribe({
       next: (data: any) => {
         this.resources = data.Resources || [];
+        this.filteredResources = [...this.resources];
         this.locations = data.Locations || [];
+        this.updatePagination();
         this.loading = false;
         this.cdr.detectChanges();
       },
@@ -131,6 +140,41 @@ export class ResourcesComponent implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  filterByLocation(): void {
+    if (this.selectedLocationFilter) {
+      const selectedLocation = this.locations.find(l => l.LocationId == parseInt(this.selectedLocationFilter));
+      if (selectedLocation) {
+        this.filteredResources = this.resources.filter(r => r.LocationName === selectedLocation.Name);
+      }
+    } else {
+      this.filteredResources = [...this.resources];
+    }
+    this.currentPage = 1;
+    this.updatePagination();
+    this.cdr.detectChanges();
+  }
+
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredResources.length / this.itemsPerPage);
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedResources = this.filteredResources.slice(startIndex, endIndex);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
   }
 
   loadResources(): void {
@@ -177,6 +221,14 @@ export class ResourcesComponent implements OnInit {
 
   selectResource(resource: ResourceResponse): void {
     this.selectedResource = resource;
+    
+    // Scroll to details panel
+    setTimeout(() => {
+      const detailsPanel = document.querySelector('.col-md-6:last-child');
+      if (detailsPanel) {
+        detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
 
     // Check if room/desk exists for this resource and load data
     if (this.isRoomType(resource.ResourceType)) {
@@ -462,5 +514,14 @@ export class ResourcesComponent implements OnInit {
 
   isDeskType(type: any): boolean {
     return type == 2 || type === '2' || type === 'Desk';
+  }
+
+  scrollToResourceForm(): void {
+    setTimeout(() => {
+      const formElement = document.querySelector('.card:has(.card-header h6)');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   }
 }

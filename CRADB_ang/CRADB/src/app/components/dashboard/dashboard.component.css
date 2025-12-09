@@ -370,3 +370,43 @@
 .toggle-icon {
   font-size: 0.7rem;
 }
+
+/* Calendar Widget Styles */
+.calendar-section {
+  height: fit-content;
+}
+
+.calendar-grid {
+  user-select: none;
+}
+
+.calendar-day {
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.calendar-day:hover {
+  background: #f1f5f9;
+}
+
+.calendar-day.current-day {
+  background: #6366f1;
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.current-day:hover {
+  background: #4f46e5;
+}
+
+.calendar-day.other-month {
+  color: #cbd5e1;
+}
+
+.calendar-day.has-booking {
+  font-weight: 600;
+}

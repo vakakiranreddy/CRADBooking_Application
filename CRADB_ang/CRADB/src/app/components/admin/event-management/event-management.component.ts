@@ -224,6 +224,14 @@ export class EventManagementComponent implements OnInit {
       isActive: event.IsActive
     });
     this.showCreateForm = true;
+    
+    // Scroll to form
+    setTimeout(() => {
+      const formElement = document.querySelector('.event-form-card');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   }
 
   deleteEvent(id: number): void {
@@ -441,8 +449,8 @@ export class EventManagementComponent implements OnInit {
     const broadcastDto = {
       Title: `New Event: ${eventData.EventTitle}`,
       Message: `A new event "${eventData.EventTitle}" has been scheduled for ${eventDate} at ${startTime} in ${locationName}. Check it out and RSVP!`,
-      LocationId: eventData.LocationId,
-      TargetAudience: 'All'
+      Type: 0,
+      TargetLocationId: eventData.LocationId
     };
 
     this.notificationService.createBroadcast(broadcastDto).subscribe({

@@ -19,7 +19,8 @@ export class UserEventsComponent implements OnInit {
   filteredEvents: EventResponse[] = [];
   loading = false;
   searchTerm = '';
-  eventFilter = '';
+  selectedLocationFilter: number | null = null;
+  locations: any[] = [];
 
   userRsvps: { [eventId: number]: string } = {};
   currentUser: any;
@@ -35,60 +36,71 @@ export class UserEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-      if (user) {
-        this.loadEvents();
-      }
-    });
-    
-    // Initial check
     const user = this.authService.getCurrentUser();
     if (user) {
       this.currentUser = user;
-      this.loadEvents();
+      this.loadData();
     }
+    
+    this.authService.currentUser$.subscribe(user => {
+      if (user && user !== this.currentUser) {
+        this.currentUser = user;
+        this.loadData();
+      }
+    });
   }
 
-  loadEvents(): void {
+  loadData(): void {
     this.loading = true;
-    this.eventService.getAllEvents().subscribe({
-      next: (events) => {
+    this.eventService.getEventsWithLocations().subscribe({
+      next: ({ events, locations }) => {
         this.events = events.filter(event => event.IsActive);
-        this.filteredEvents = this.events;
+        this.locations = locations;
+        this.applyFilters();
         this.loadUserRsvps();
         this.loading = false;
         this.cdr.detectChanges();
       },
       error: (error) => {
-        console.error('Error loading events:', error);
+        console.error('Error loading data:', error);
         this.loading = false;
       }
     });
   }
 
+  applyFilters(): void {
+    this.filteredEvents = this.events.filter(event => {
+      if (this.selectedLocationFilter && event.LocationId !== this.selectedLocationFilter) {
+        return false;
+      }
+      return true;
+    });
+  }
+
+  onLocationFilterChange(): void {
+    this.applyFilters();
+  }
+
   loadUserRsvps(): void {
-    this.events.forEach(event => {
-      this.rsvpService.getUserRsvp(event.EventId).subscribe({
-        next: (rsvp) => {
-          this.userRsvps[event.EventId] = (rsvp && rsvp.Status !== undefined) ? this.getStatusString(rsvp.Status) : '';
-        },
-        error: () => {
-          this.userRsvps[event.EventId] = '';
-        }
-      });
+    if (!this.currentUser?.Id) return;
+    
+    this.rsvpService.getRsvpsByUser(this.currentUser.Id).subscribe({
+      next: (rsvps) => {
+        rsvps.forEach(rsvp => {
+          this.userRsvps[rsvp.EventId] = this.getStatusString(rsvp.Status);
+        });
+      },
+      error: (error) => console.error('Error loading user RSVPs:', error)
     });
   }
 
 
 
   getEventImage(event: EventResponse): string {
-    const images = [
-      'https://images.unsplash.com/photo-1511578314322-379afb476865?w=400',
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
-      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400'
-    ];
-    return images[event.EventId % images.length];
+    if (event.EventImage) {
+      return `data:image/jpeg;base64,${event.EventImage}`;
+    }
+    return '';
   }
 
   formatEventDate(date: string): string {

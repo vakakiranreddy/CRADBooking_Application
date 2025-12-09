@@ -50,19 +50,6 @@
             </div>
           </div>
         </section>
-
-        <section class="organizer-section" *ngIf="currentUser">
-          <h2>Organizer</h2>
-          <div class="organizer-card">
-            <div class="organizer-avatar">
-              {{(currentUser.FirstName?.[0] || 'U') + (currentUser.LastName?.[0] || '')}}
-            </div>
-            <div class="organizer-info">
-              <h3>{{currentUser.FirstName}} {{currentUser.LastName}}</h3>
-              <p>{{currentUser.Department || 'Employee'}}</p>
-            </div>
-          </div>
-        </section>
       </div>
 
       <!-- Right Column: RSVP Sidebar -->
@@ -92,29 +79,6 @@
           </div>
         </div>
 
-        <div class="attendees-card glass-panel">
-          <h3>Who's Going?</h3>
-          <div class="attendee-stats">
-            <div class="stat-row">
-              <div class="stat-label">
-                <span class="dot yes"></span> Going
-              </div>
-              <span class="stat-value">{{eventCounts.interested}}</span>
-            </div>
-            <div class="stat-row">
-              <div class="stat-label">
-                <span class="dot maybe"></span> Maybe
-              </div>
-              <span class="stat-value">{{eventCounts.maybe}}</span>
-            </div>
-            <div class="stat-row">
-              <div class="stat-label">
-                <span class="dot no"></span> Not Going
-              </div>
-              <span class="stat-value">{{eventCounts.notInterested}}</span>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>

@@ -19,7 +19,10 @@ export class DashboardService {
     return this.http.get(`${this.apiUrl}/employee-data`);
   }
 
-  getCalendarPageData(): Observable<any> {
+  getCalendarPageData(userId?: number | null): Observable<any> {
+    if (userId) {
+      return this.http.get(`${this.apiUrl}/calendar-data`, { params: { userId: userId.toString() } });
+    }
     return this.http.get(`${this.apiUrl}/calendar-data`);
   }
 

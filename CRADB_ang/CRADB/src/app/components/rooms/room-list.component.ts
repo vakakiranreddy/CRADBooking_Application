@@ -27,6 +27,7 @@ export class RoomListComponent implements OnInit {
   showBookingModal = false;
   selectedRoom: RoomResponse | null = null;
   bookingLoading = false;
+  minDateTime = '';
   bookingData = {
     meetingName: '',
     startTime: '',
@@ -49,7 +50,13 @@ export class RoomListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.updateMinDateTime();
     this.refreshData();
+  }
+
+  updateMinDateTime(): void {
+    const now = new Date();
+    this.minDateTime = this.formatDateTimeLocal(now);
   }
 
   refreshData(): void {
@@ -151,16 +158,18 @@ export class RoomListComponent implements OnInit {
 
     this.bookingService.createBooking(booking).subscribe({
       next: (response) => {
+        this.bookingLoading = false;
+        this.cdr.detectChanges();
         Toastify({
           text: "Room booked successfully!",
           duration: 3000,
           backgroundColor: "#10b981"
         }).showToast();
-        this.bookingLoading = false;
         this.closeBookingModal();
       },
       error: (error) => {
         this.bookingLoading = false;
+        this.cdr.detectChanges();
         Toastify({
           text: error?.error?.message || "Failed to book room. Please try again.",
           duration: 3000,
@@ -186,14 +195,6 @@ export class RoomListComponent implements OnInit {
       }
       return `data:image/jpeg;base64,${room.RoomImage}`;
     }
-
-    // Fallback to placeholders if no image is available
-    const images = [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400',
-      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400',
-      'https://images.unsplash.com/photo-1582653291997-079a1c04e5a1?w=400'
-    ];
-    return images[room.ResourceId % images.length];
+    return '';
   }
 }

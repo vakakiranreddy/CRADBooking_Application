@@ -29,7 +29,8 @@
   <div class="rooms-grid" *ngIf="!loading">
     <div *ngFor="let room of rooms" class="room-card">
       <div class="room-image">
-        <img [src]="getRoomImage(room)" [alt]="room.RoomName">
+        <img *ngIf="getRoomImage(room)" [src]="getRoomImage(room)" [alt]="room.RoomName">
+        <div *ngIf="!getRoomImage(room)" class="no-image-placeholder">No Image</div>
       </div>
       <div class="room-info">
         <div class="room-header">
@@ -61,11 +62,11 @@
       </div>
       <div class="form-group">
         <label>Start Time *</label>
-        <input type="datetime-local" [(ngModel)]="bookingData.startTime" name="startTime" required>
+        <input type="datetime-local" [(ngModel)]="bookingData.startTime" name="startTime" [min]="minDateTime" required>
       </div>
       <div class="form-group">
         <label>End Time *</label>
-        <input type="datetime-local" [(ngModel)]="bookingData.endTime" name="endTime" required>
+        <input type="datetime-local" [(ngModel)]="bookingData.endTime" name="endTime" [min]="bookingData.startTime || minDateTime" required>
       </div>
       <div class="form-group">
         <label>Participants *</label>

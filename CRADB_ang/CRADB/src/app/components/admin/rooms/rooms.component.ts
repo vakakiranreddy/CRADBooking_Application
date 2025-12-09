@@ -29,6 +29,8 @@ export class RoomsComponent implements OnInit {
   selectedFile: File | null = null;
   searchTerm = '';
   statusFilter = '';
+  selectedLocationFilter = '';
+  locations: any[] = [];
 
   // Modal states
   showDeleteModal = false;
@@ -60,7 +62,18 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
+    this.loadLocations();
     this.loadRooms();
+  }
+
+  loadLocations(): void {
+    this.locations = [
+      { LocationId: 1, Name: 'Bengaluru' },
+      { LocationId: 2, Name: 'Chennai' },
+      { LocationId: 3, Name: 'Coimbatore' },
+      { LocationId: 4, Name: 'Pune' },
+      { LocationId: 5, Name: 'Hyderabad' }
+    ];
   }
 
   loadRooms(): void {
@@ -90,6 +103,13 @@ export class RoomsComponent implements OnInit {
         room.LocationName?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         room.BuildingName?.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+    }
+
+    if (this.selectedLocationFilter) {
+      const selectedLocation = this.locations.find(l => l.LocationId == this.selectedLocationFilter);
+      if (selectedLocation) {
+        filtered = filtered.filter(room => room.LocationName === selectedLocation.Name);
+      }
     }
 
     if (this.statusFilter === 'available') {

@@ -28,6 +28,8 @@ export class DesksComponent implements OnInit {
   saving = false;
   searchTerm = '';
   statusFilter = '';
+  selectedLocationFilter = '';
+  locations: any[] = [];
   selectedFile: File | null = null;
 
   // Modal states
@@ -56,7 +58,20 @@ export class DesksComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
+    this.loadLocations();
     this.loadDesks();
+  }
+
+  loadLocations(): void {
+    // Assuming you have a location service
+    // If not, you can hardcode or fetch from another service
+    this.locations = [
+      { LocationId: 1, Name: 'Bengaluru' },
+      { LocationId: 2, Name: 'Chennai' },
+      { LocationId: 3, Name: 'Coimbatore' },
+      { LocationId: 4, Name: 'Pune' },
+      { LocationId: 5, Name: 'Hyderabad' }
+    ];
   }
 
   loadDesks(): void {
@@ -86,6 +101,13 @@ export class DesksComponent implements OnInit {
         desk.LocationName?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         desk.BuildingName?.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+    }
+
+    if (this.selectedLocationFilter) {
+      const selectedLocation = this.locations.find(l => l.LocationId == this.selectedLocationFilter);
+      if (selectedLocation) {
+        filtered = filtered.filter(desk => desk.LocationName === selectedLocation.Name);
+      }
     }
 
     if (this.statusFilter === 'available') {

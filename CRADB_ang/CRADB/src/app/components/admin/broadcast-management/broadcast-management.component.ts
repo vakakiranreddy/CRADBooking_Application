@@ -44,8 +44,7 @@ export class BroadcastManagementComponent implements OnInit {
     this.broadcastForm = this.fb.group({
       title: ['', Validators.required],
       message: ['', Validators.required],
-      type: [1, Validators.required],
-      targetType: [''],
+      type: [0, Validators.required],
       targetId: [null]
     });
   }
@@ -115,10 +114,7 @@ export class BroadcastManagementComponent implements OnInit {
       const matchesLocation = !this.selectedLocationId ||
         broadcast.TargetLocationId === this.selectedLocationId;
 
-      const matchesDepartment = !this.selectedDepartmentId ||
-        broadcast.TargetDepartmentId === this.selectedDepartmentId;
-
-      return matchesSearch && matchesLocation && matchesDepartment;
+      return matchesSearch && matchesLocation;
     });
     this.cdr.detectChanges();
   }
@@ -133,16 +129,9 @@ export class BroadcastManagementComponent implements OnInit {
     const broadcastData: SendBroadcastDto = {
       Title: formValue.title,
       Message: formValue.message,
-      Type: formValue.type
+      Type: formValue.type.toString(),
+      TargetLocationId: formValue.targetId || undefined
     };
-
-    if (formValue.targetType === 'location' && formValue.targetId) {
-      broadcastData.TargetLocationId = formValue.targetId;
-    } else if (formValue.targetType === 'department' && formValue.targetId) {
-      broadcastData.TargetDepartmentId = formValue.targetId;
-    } else if (formValue.targetType === 'role' && formValue.targetId) {
-      broadcastData.TargetRole = formValue.targetId;
-    }
 
     this.broadcastService.createBroadcast(broadcastData).subscribe({
       next: () => {
@@ -251,7 +240,7 @@ export class BroadcastManagementComponent implements OnInit {
   toggleForm(): void {
     this.showCreateForm = !this.showCreateForm;
     if (this.showCreateForm) {
-      this.broadcastForm.reset({ type: 1, targetType: '' });
+      this.broadcastForm.reset({ type: 0, targetId: null });
     }
   }
 

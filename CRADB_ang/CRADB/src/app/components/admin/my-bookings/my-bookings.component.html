@@ -86,29 +86,31 @@
           </div>
           <div class="booking-details">
             <div class="booking-id">
-              <i class="fas fa-bookmark me-2"></i>
+              <i class="fas fa-bookmark"></i>
               <span>Booking id #{{booking.BookingId}}</span>
             </div>
             <div class="booking-meta">
-              <div class="meta-item">
-                <i class="fas fa-briefcase me-2"></i>
-                <span>{{booking.Purpose || 'Meeting'}}</span>
-              </div>
-              <div class="meta-item">
-                <i class="fas fa-map-marker-alt me-2"></i>
-                <span>{{booking.LocationName || 'Office'}}</span>
-              </div>
-              <div class="meta-item">
-                <i class="fas fa-users me-2"></i>
-                <span>{{booking.ParticipantCount || 1}} people</span>
-              </div>
-              <div class="meta-item">
-                <i class="fas fa-calendar me-2"></i>
-                <span>{{formatDate(booking.StartTime)}}</span>
-              </div>
-              <div class="meta-item">
-                <i class="fas fa-clock me-2"></i>
-                <span>{{formatTime(booking.StartTime)}} - {{formatTime(booking.EndTime)}}</span>
+              <div class="d-flex flex-column flex-md-row flex-wrap gap-2 gap-md-3">
+                <div class="meta-item">
+                  <i class="fas fa-briefcase"></i>
+                  <span>{{booking.Purpose || 'Meeting'}}</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>{{booking.LocationName || 'Office'}}</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-users"></i>
+                  <span>{{booking.ParticipantCount || 1}} people</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <span>{{formatDate(booking.StartTime)}}</span>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>{{formatTime(booking.StartTime)}} - {{formatTime(booking.EndTime)}}</span>
+                </div>
               </div>
             </div>
           </div>

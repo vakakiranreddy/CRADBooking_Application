@@ -21,61 +21,43 @@
   @for (booking of bookings; track booking.id) {
   <div class="booking-card mb-3">
     @if (bookingType === 'room') {
-    <div class="d-flex align-items-center">
-      <div class="room-placeholder me-3">
+    <div class="d-flex flex-column flex-md-row align-items-start">
+      <div class="room-placeholder me-md-3 mb-2 mb-md-0">
         <i class="fas fa-door-open fa-2x text-muted"></i>
       </div>
-      <div class="flex-grow-1">
-        <h5 class="mb-1">{{ booking.resourceName }}</h5>
-        <div class="d-flex align-items-center text-muted mb-2">
-          <i class="fas fa-user me-1"></i>
-          <span class="me-3">Employee: {{ booking.userName }}</span>
-          <span class="me-3">Booking id #{{ booking.id }}</span>
+      <div class="flex-grow-1 w-100">
+        <h5 class="mb-2" style="font-size: 15px; font-weight: 600;">{{ booking.resourceName }}</h5>
+        <div class="d-flex flex-column flex-md-row align-items-start mb-2" style="gap: 8px; font-size: 12px;">
+          <span class="d-flex align-items-center"><i class="fas fa-user me-1"></i>Employee: {{ booking.userName }}</span>
+          <span class="d-flex align-items-center">Booking id #{{ booking.id }}</span>
         </div>
-        <div class="d-flex align-items-center text-muted">
-          <i class="fas fa-clipboard me-1"></i>
-          <span class="me-3">{{ booking.purpose }}</span>
-          <i class="fas fa-map-marker-alt me-1"></i>
-          <span class="me-3">{{ booking.location || 'Location' }}</span>
-          <i class="fas fa-users me-1"></i>
-          <span class="me-3">{{ booking.participants || 'N/A' }} people</span>
-          <i class="fas fa-calendar me-1"></i>
-          <span class="me-3">{{ booking.date }}</span>
-          <i class="fas fa-clock me-1"></i>
-          <span>{{ booking.time }}</span>
+        <div class="booking-details">
+          <div class="detail-item"><i class="fas fa-clipboard"></i><span>{{ booking.purpose }}</span></div>
+          <div class="detail-item"><i class="fas fa-map-marker-alt"></i><span>{{ booking.location || 'Location' }}</span></div>
+          <div class="detail-item"><i class="fas fa-users"></i><span>{{ booking.participants || 'N/A' }} people</span></div>
+          <div class="detail-item"><i class="fas fa-calendar"></i><span>{{ booking.date }}</span></div>
+          <div class="detail-item"><i class="fas fa-clock"></i><span>{{ booking.time }}</span></div>
         </div>
       </div>
     </div>
     } @else {
-    <div class="d-flex align-items-center">
-      <div class="user-avatar me-3">
+    <div class="d-flex flex-column flex-md-row align-items-start">
+      <div class="user-avatar me-md-3 mb-2 mb-md-0">
         <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center">
           <i class="fas fa-user text-muted"></i>
         </div>
       </div>
-      <div class="flex-grow-1">
-        <div class="d-flex justify-content-between align-items-start">
+      <div class="flex-grow-1 w-100">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start" style="gap: 10px;">
           <div>
-            <h6 class="mb-0">{{ booking.resourceName }} - {{ booking.userName }}</h6>
-            <small class="text-muted">{{ booking.userTitle || 'Employee' }}</small>
+            <h6 class="mb-1" style="font-size: 14px; font-weight: 600;">{{ booking.resourceName }} - {{ booking.userName }}</h6>
+            <small class="text-muted" style="font-size: 11px;">{{ booking.userTitle || 'Employee' }}</small>
           </div>
-          <div class="d-flex align-items-center gap-4">
-            <div class="d-flex align-items-center text-muted">
-              <i class="fas fa-bookmark me-1 text-success"></i>
-              <span>Booking id #{{ booking.id }}</span>
-            </div>
-            <div class="d-flex align-items-center text-muted">
-              <i class="fas fa-map-marker-alt me-1"></i>
-              <span>{{ booking.location }}</span>
-            </div>
-            <div class="d-flex align-items-center text-muted">
-              <i class="fas fa-calendar me-1"></i>
-              <span>{{ booking.date }}</span>
-            </div>
-            <div class="d-flex align-items-center text-muted">
-              <i class="fas fa-clock me-1"></i>
-              <span>{{ booking.time }}</span>
-            </div>
+          <div class="booking-details">
+            <div class="detail-item"><i class="fas fa-bookmark text-success"></i><span>Booking id #{{ booking.id }}</span></div>
+            <div class="detail-item"><i class="fas fa-map-marker-alt"></i><span>{{ booking.location }}</span></div>
+            <div class="detail-item"><i class="fas fa-calendar"></i><span>{{ booking.date }}</span></div>
+            <div class="detail-item"><i class="fas fa-clock"></i><span>{{ booking.time }}</span></div>
           </div>
         </div>
       </div>

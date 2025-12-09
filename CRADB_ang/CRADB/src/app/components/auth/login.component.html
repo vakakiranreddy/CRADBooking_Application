@@ -27,13 +27,13 @@
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="mb-4">
-            <label for="email" class="form-label">Email ID</label>
+            <label for="email" class="form-label">Email ID <span class="text-danger">*</span></label>
             <input 
               type="email" 
               class="form-control" 
               id="email" 
               formControlName="email"
-              placeholder="name@kanini.com"
+              placeholder="example@gmail.com"
               [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
             <div class="invalid-feedback" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
               <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
@@ -42,7 +42,7 @@
           </div>
 
           <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
+            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
             <div class="position-relative">
               <input 
                 [type]="showPassword ? 'text' : 'password'" 

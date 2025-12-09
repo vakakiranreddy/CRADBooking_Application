@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
-import Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +20,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,12 +41,8 @@ export class LoginComponent {
         },
         error: (error) => {
           this.loading = false;
-          this.errorMessage = error.error?.message || 'Login failed. Please try again.';
-          Toastify({
-            text: this.errorMessage,
-            duration: 3000,
-            backgroundColor: "#ef4444"
-          }).showToast();
+          this.errorMessage = 'Invalid email or password. Please try again.';
+          this.cdr.detectChanges();
         }
       });
     }

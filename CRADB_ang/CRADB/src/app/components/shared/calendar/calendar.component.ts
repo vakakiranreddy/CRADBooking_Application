@@ -50,32 +50,19 @@ export class CalendarComponent implements OnInit {
 
   loadData() {
     const isAdmin = this.authService.isAdmin();
+    const userId = isAdmin ? null : this.currentUser?.UserId;
     
-    if (isAdmin) {
-      this.dashboardService.getCalendarPageData().subscribe({
-        next: (data: any) => {
-          this.mapDataToCalendarEvents(data.Bookings || [], data.Events || []);
-          this.generateCalendar();
-          this.cdr.detectChanges();
-        },
-        error: (err) => {
-          console.error('Error loading calendar data', err);
-          this.generateCalendar();
-        }
-      });
-    } else {
-      this.bookingService.getMyBookings().subscribe({
-        next: (bookings) => {
-          this.mapDataToCalendarEvents(bookings, []);
-          this.generateCalendar();
-          this.cdr.detectChanges();
-        },
-        error: (err) => {
-          console.error('Error loading calendar data', err);
-          this.generateCalendar();
-        }
-      });
-    }
+    this.dashboardService.getCalendarPageData(userId).subscribe({
+      next: (data: any) => {
+        this.mapDataToCalendarEvents(data.Bookings || [], data.Events || []);
+        this.generateCalendar();
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Error loading calendar data', err);
+        this.generateCalendar();
+      }
+    });
   }
 
   mapDataToCalendarEvents(bookings: BookingResponse[], events: EventResponse[]) {

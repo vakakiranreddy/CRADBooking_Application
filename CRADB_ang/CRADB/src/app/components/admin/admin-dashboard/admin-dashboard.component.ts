@@ -87,16 +87,16 @@ recentBookings: any[] = [];
     
     this.dashboardService.getAdminDashboardData(userId).subscribe({
       next: (data: any) => {
-        this.stats.totalUsers = data.Users?.length || 0;
-        this.stats.totalRooms = data.Rooms?.length || 0;
-        this.stats.totalDepartments = data.Departments?.length || 0;
-        this.stats.totalDesks = data.Desks?.length || 0;
-        this.stats.totalLocations = data.Locations?.length || 0;
-        
         this.locations = data.Locations || [];
         if (this.locations.length > 0) {
           this.selectedLocation = this.locations[0];
         }
+        
+        this.stats.totalUsers = data.Users?.length || 0;
+        this.stats.totalDepartments = data.Departments?.length || 0;
+        this.stats.totalLocations = this.locations.length;
+        
+        this.updateStatsForLocation(data);
         
         this.upcomingEvents = data.UpcomingEvents?.slice(0, 3) || [];
         
@@ -215,6 +215,48 @@ recentBookings: any[] = [];
   onLocationChange(event: any): void {
     const locationId = event.target.value;
     this.selectedLocation = this.locations.find(l => l.LocationId == locationId);
+    this.loadDashboardData();
+  }
+
+  updateStatsForLocation(data: any): void {
+    const locationId = this.selectedLocation?.LocationId;
+    
+    if (locationId) {
+      const locationRooms = (data.Rooms || []).filter((r: any) => r.LocationId === locationId);
+      const locationDesks = (data.Desks || []).filter((d: any) => d.LocationId === locationId);
+      
+      this.stats.totalRooms = locationRooms.length;
+      this.stats.totalDesks = locationDesks.length;
+      
+      const bookings = (data.Bookings || []).filter((b: any) => b.LocationId === locationId);
+      this.allBookings = bookings;
+      
+      const now = new Date();
+      const activeBookings = bookings.filter((b: any) => {
+        const startTime = new Date(b.StartTime);
+        const endTime = new Date(b.EndTime);
+        return now >= startTime && now <= endTime && (b.Status === BookingStatus.Confirmed || b.Status === BookingStatus.Active);
+      });
+      
+      this.stats.activeBookings = activeBookings.length;
+      this.stats.busyRooms = activeBookings.filter((b: any) => b.ResourceType === ResourceType.Room || b.ResourceType === 'Room').length;
+      this.stats.occupiedDesks = activeBookings.filter((b: any) => b.ResourceType === ResourceType.Desk || b.ResourceType === 'Desk').length;
+    } else {
+      this.stats.totalRooms = data.Rooms?.length || 0;
+      this.stats.totalDesks = data.Desks?.length || 0;
+      this.allBookings = data.Bookings || [];
+      
+      const now = new Date();
+      const activeBookings = this.allBookings.filter((b: any) => {
+        const startTime = new Date(b.StartTime);
+        const endTime = new Date(b.EndTime);
+        return now >= startTime && now <= endTime && (b.Status === BookingStatus.Confirmed || b.Status === BookingStatus.Active);
+      });
+      
+      this.stats.activeBookings = activeBookings.length;
+      this.stats.busyRooms = activeBookings.filter((b: any) => b.ResourceType === ResourceType.Room || b.ResourceType === 'Room').length;
+      this.stats.occupiedDesks = activeBookings.filter((b: any) => b.ResourceType === ResourceType.Desk || b.ResourceType === 'Desk').length;
+    }
   }
 
   getCurrentMonth(): string {

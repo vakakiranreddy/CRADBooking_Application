@@ -25,6 +25,12 @@ export class DashboardComponent implements OnInit {
   upcomingBookings: BookingResponse[] = [];
   locations: LocationResponse[] = [];
   notifications: any[] = [];
+  
+  // Calendar properties
+  currentDate = new Date();
+  calendarWeeks: any[][] = [];
+  currentMonthYear = '';
+  todayDate = '';
 
   constructor(
     private authService: AuthService,
@@ -47,6 +53,9 @@ export class DashboardComponent implements OnInit {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       this.currentUser = currentUser;
+      this.generateCalendar();
+      this.currentMonthYear = this.getCurrentMonth();
+      this.todayDate = this.getTodayDate();
       this.loadBookings();
     }
   }
@@ -83,6 +92,7 @@ export class DashboardComponent implements OnInit {
         this.upcomingBookings = bookings.filter((b: BookingResponse) => 
           new Date(b.StartTime) > now && this.getStatusText(b.SessionStatus) === 'Reserved'
         );
+        this.updateCalendarWithBookings();
         this.cdr.detectChanges();
       },
       error: (error: any) => {
@@ -300,5 +310,92 @@ export class DashboardComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  // Calendar methods
+  getCurrentMonth(): string {
+    return this.currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  }
+
+  getTodayDate(): string {
+    return this.currentDate.toLocaleDateString('en-US', { 
+      weekday: 'long', 
+      day: 'numeric', 
+      month: 'long', 
+      year: 'numeric' 
+    });
+  }
+
+  generateCalendar(): void {
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const startDate = new Date(firstDay);
+    startDate.setDate(startDate.getDate() - firstDay.getDay());
+    
+    this.calendarWeeks = [];
+    const today = new Date();
+    
+    for (let week = 0; week < 6; week++) {
+      const weekDays = [];
+      for (let day = 0; day < 7; day++) {
+        const currentDay = new Date(startDate);
+        currentDay.setDate(startDate.getDate() + (week * 7) + day);
+        
+        weekDays.push({
+          date: currentDay.getDate(),
+          isToday: currentDay.toDateString() === today.toDateString(),
+          isCurrentMonth: currentDay.getMonth() === month,
+          hasBooking: false
+        });
+      }
+      this.calendarWeeks.push(weekDays);
+    }
+    
+    this.updateCalendarWithBookings();
+  }
+
+  updateCalendarWithBookings(): void {
+    if (!this.calendarWeeks.length || !this.recentBookings.length) return;
+    
+    const currentMonth = this.currentDate.getMonth();
+    const currentYear = this.currentDate.getFullYear();
+    
+    this.calendarWeeks.forEach(week => {
+      week.forEach(day => {
+        const dayDate = new Date(currentYear, currentMonth, day.date);
+        const dayString = dayDate.toISOString().split('T')[0];
+        
+        day.hasBooking = this.recentBookings.some(booking => {
+          const bookingDate = new Date(booking.StartTime).toISOString().split('T')[0];
+          return bookingDate === dayString;
+        });
+      });
+    });
+  }
+
+  previousMonth(): void {
+    this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+    this.generateCalendar();
+    this.currentMonthYear = this.getCurrentMonth();
+  }
+
+  nextMonth(): void {
+    this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+    this.generateCalendar();
+    this.currentMonthYear = this.getCurrentMonth();
+  }
+
+  onDateClick(day: any): void {
+    if (!day.isCurrentMonth) return;
+    
+    if (day.hasBooking) {
+      this.router.navigate(['/bookings']);
+    }
+  }
+
+  getUserDisplayName(): string {
+    if (!this.currentUser) return 'User';
+    return `${this.currentUser.FirstName || ''} ${this.currentUser.LastName || ''}`.trim() || 'User';
   }
 }

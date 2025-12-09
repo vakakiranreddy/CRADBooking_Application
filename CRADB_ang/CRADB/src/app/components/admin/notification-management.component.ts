@@ -18,10 +18,9 @@ import Toastify from 'toastify-js';
   styleUrls: ['./notification-management.component.css']
 })
 export class NotificationManagementComponent implements OnInit {
-  broadcastForm: SendBroadcastDto = {
+  broadcastForm: any = {
     Title: '',
     Message: '',
-    TargetAudience: 'All',
     LocationId: undefined
   };
 
@@ -104,7 +103,16 @@ export class NotificationManagementComponent implements OnInit {
 
     this.sending = true;
 
-    this.notificationService.createBroadcast(this.broadcastForm).subscribe({
+    const dto: SendBroadcastDto = {
+      Title: this.broadcastForm.Title,
+      Message: this.broadcastForm.Message,
+      Type: 0, // General broadcast
+      TargetLocationId: this.broadcastForm.LocationId || null,
+      TargetDepartmentId: null,
+      TargetRole: null
+    };
+
+    this.notificationService.createBroadcast(dto).subscribe({
       next: (response) => {
         this.sending = false;
         Toastify({
@@ -117,7 +125,6 @@ export class NotificationManagementComponent implements OnInit {
         this.broadcastForm = {
           Title: '',
           Message: '',
-          TargetAudience: 'All',
           LocationId: undefined
         };
 

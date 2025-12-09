@@ -120,8 +120,8 @@ export class NavbarComponent implements OnInit {
     const broadcastDto = {
       Title: this.emailForm.subject,
       Message: this.emailForm.message,
-      LocationId: this.emailForm.locationId ? parseInt(this.emailForm.locationId) : undefined,
-      TargetAudience: this.emailForm.type
+      Type: 0,
+      TargetLocationId: this.emailForm.locationId ? parseInt(this.emailForm.locationId) : undefined
     };
 
     this.notificationService.createBroadcast(broadcastDto).subscribe({

@@ -1,17 +1,17 @@
 <div class="container-fluid">
-  <div class="d-flex justify-content-between align-items-center p-3 bg-white border-bottom">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 p-2 p-md-3 bg-white border-bottom">
     <div>
-      <h2 class="h4 mb-1 fw-semibold">Department Management</h2>
-      <p class="text-muted mb-0 small">Manage departments and organizational structure.</p>
+      <h2 class="mb-1" style="font-size: 18px; font-weight: 600;">Department Management</h2>
+      <p class="text-muted mb-0" style="font-size: 12px;">Manage departments and organizational structure.</p>
     </div>
     <div class="position-relative">
-      <div class="d-flex align-items-center gap-2 cursor-pointer" (click)="toggleProfileDropdown()">
-        <div class="profile-avatar">
+      <div class="d-flex align-items-center gap-2 cursor-pointer" (click)="toggleProfileDropdown()" style="cursor: pointer;">
+        <div class="profile-avatar" style="width: 30px; height: 30px; font-size: 12px;">
           <img *ngIf="getProfileImage()" [src]="getProfileImage()" alt="Profile" class="avatar-image">
           <span *ngIf="!getProfileImage()">{{ getUserInitials() }}</span>
         </div>
-        <span class="small fw-medium">{{ getUserRole() }}</span>
-        <i class="fas fa-chevron-down small"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px; font-weight: 500;">{{ getUserRole() }}</span>
+        <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
       </div>
 
       @if (showProfileDropdown) {
@@ -28,16 +28,16 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-between align-items-center p-3 bg-white">
-    <h5 class="mb-0">All Departments <span class="badge bg-primary">{{filteredDepartments.length}}</span></h5>
-    <div class="d-flex gap-2">
-      <div class="input-group" style="width: 250px;">
-        <span class="input-group-text"><i class="fas fa-search"></i></span>
-        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm"
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 p-2 bg-white">
+    <h5 class="mb-0" style="font-size: 15px; font-weight: 600;">All Departments <span class="badge bg-primary" style="font-size: 11px; padding: 3px 8px;">{{filteredDepartments.length}}</span></h5>
+    <div class="d-flex gap-2 flex-wrap">
+      <div class="input-group" style="width: 160px; min-width: 120px;">
+        <span class="input-group-text" style="padding: 5px 8px; border-radius: 6px 0 0 6px;"><i class="fas fa-search" style="font-size: 11px;"></i></span>
+        <input type="text" class="form-control" style="padding: 5px 8px; font-size: 12px; border-radius: 0 6px 6px 0;" placeholder="Search..." [(ngModel)]="searchTerm"
           (input)="searchDepartments()">
       </div>
-      <button class="btn btn-primary" (click)="openAddModal()">
-        <i class="fas fa-plus me-1"></i>Add
+      <button class="btn btn-primary" style="padding: 5px 12px; font-size: 12px; white-space: nowrap;" (click)="openAddModal()">
+        <i class="fas fa-plus"></i><span class="d-none d-sm-inline ms-1">Add</span>
       </button>
     </div>
   </div>
@@ -65,22 +65,22 @@
     <div class="departments-grid">
       @for (dept of filteredDepartments; track dept.DepartmentId) {
       <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <h6 class="mb-0">{{ dept.DepartmentName }}</h6>
-          <span class="badge" [class.bg-success]="dept.IsActive" [class.bg-secondary]="!dept.IsActive">
+        <div class="card-header d-flex justify-content-between align-items-center" style="padding: 10px 12px;">
+          <h6 class="mb-0" style="font-size: 14px; font-weight: 600;">{{ dept.DepartmentName }}</h6>
+          <span class="badge" style="font-size: 11px; padding: 4px 8px;" [class.bg-success]="dept.IsActive" [class.bg-secondary]="!dept.IsActive">
             {{ dept.IsActive ? 'Active' : 'Inactive' }}
           </span>
         </div>
-        <div class="card-body">
-          <p class="text-muted small mb-2" style="min-height: 40px;">{{ dept.Description || 'No description' }}</p>
-          <small class="text-muted">Created: {{ dept.CreatedAt | date:'short' }}</small>
+        <div class="card-body" style="padding: 12px;">
+          <p class="text-muted mb-2" style="font-size: 12px; line-height: 1.4; min-height: 34px;">{{ dept.Description || 'No description' }}</p>
+          <small class="text-muted" style="font-size: 11px;">Created: {{ dept.CreatedAt | date:'short' }}</small>
         </div>
-        <div class="card-footer bg-light d-flex gap-2">
-          <button class="btn btn-sm btn-outline-primary flex-fill" (click)="openEditModal(dept)">
-            <i class="fas fa-edit me-1"></i>Edit
+        <div class="card-footer bg-light d-flex gap-2" style="padding: 10px 12px;">
+          <button class="btn btn-sm btn-outline-primary flex-fill" style="padding: 5px 10px; font-size: 12px;" (click)="openEditModal(dept)">
+            <i class="fas fa-edit"></i><span class="d-none d-sm-inline ms-1">Edit</span>
           </button>
-          <button class="btn btn-sm btn-outline-danger flex-fill" (click)="openDeleteModal(dept)">
-            <i class="fas fa-trash me-1"></i>Delete
+          <button class="btn btn-sm btn-outline-danger flex-fill" style="padding: 5px 10px; font-size: 12px;" (click)="openDeleteModal(dept)">
+            <i class="fas fa-trash"></i><span class="d-none d-sm-inline ms-1">Delete</span>
           </button>
         </div>
       </div>

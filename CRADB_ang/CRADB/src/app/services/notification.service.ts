@@ -25,8 +25,10 @@ export interface SendNotificationDto {
 export interface SendBroadcastDto {
   Title: string;
   Message: string;
-  LocationId?: number | undefined;
-  TargetAudience: string;
+  Type: number; // BroadcastNotificationType enum
+  TargetLocationId?: number | null;
+  TargetDepartmentId?: number | null;
+  TargetRole?: number | null; // UserRole enum: Admin=0, Employee=1
 }
 
 export interface EmailNotificationRequest {

@@ -27,16 +27,17 @@
     </div>
   </div>
 
-  <div class="actions-bar">
-    <div class="actions-left">
-      <h4 class="resource-count">Founding <span class="count-badge">{{filteredEmployees.length}} Members</span></h4>
+  <div class="actions-bar" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 12px 15px;">
+    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+      <h4 style="margin: 0; font-size: 16px; font-weight: 600;">Founding</h4>
+      <span style="background: #f0f0f0; padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 500;">{{filteredEmployees.length}} Members</span>
     </div>
-    <div class="actions-right">
-      <button class="btn-filter" (click)="toggleFilters()">
-        <i class="fas fa-filter"></i>Filter
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <button class="btn-filter" (click)="toggleFilters()" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">
+        <i class="fas fa-filter"></i><span class="d-none d-sm-inline ms-1">Filter</span>
       </button>
-      <button class="btn-add" (click)="showAddEmployeeModal = true">
-        <i class="fas fa-plus"></i>Add Employee
+      <button class="btn-add" (click)="showAddEmployeeModal = true" style="padding: 6px 14px; font-size: 13px; white-space: nowrap;">
+        <i class="fas fa-plus"></i><span class="d-none d-sm-inline ms-1">Add Employee</span>
       </button>
     </div>
   </div>

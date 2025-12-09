@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -27,6 +27,7 @@ export class BookRoomComponent implements OnInit {
   selectedDesk: DeskResponse | null = null;
   resourceId: number | null = null;
   resourceType: string = 'Resource';
+  minDateTime = '';
 
   constructor(
     private fb: FormBuilder,
@@ -36,7 +37,8 @@ export class BookRoomComponent implements OnInit {
     private notificationService: NotificationService,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.bookingForm = this.fb.group({
       meetingName: ['', Validators.required],
@@ -49,6 +51,7 @@ export class BookRoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.updateMinDateTime();
     this.route.queryParams.subscribe(params => {
       if (params['resourceId']) {
         this.resourceId = +params['resourceId'];
@@ -56,16 +59,11 @@ export class BookRoomComponent implements OnInit {
         this.loadResourceDetails();
       }
     });
+  }
 
+  updateMinDateTime(): void {
     const now = new Date();
-    const minDateTime = now.toISOString().slice(0, 16);
-    const startTimeControl = document.getElementById('startTime') as HTMLInputElement;
-    const endTimeControl = document.getElementById('endTime') as HTMLInputElement;
-    
-    setTimeout(() => {
-      if (startTimeControl) startTimeControl.min = minDateTime;
-      if (endTimeControl) endTimeControl.min = minDateTime;
-    }, 100);
+    this.minDateTime = now.toISOString().slice(0, 16);
   }
 
   loadResourceDetails(): void {
@@ -135,6 +133,7 @@ export class BookRoomComponent implements OnInit {
       this.bookingService.createBooking(booking).subscribe({
         next: (response) => {
           this.loading = false;
+          this.cdr.detectChanges();
           Toastify({
             text: this.resourceType + ' booked successfully!',
             duration: 3000,
@@ -144,6 +143,7 @@ export class BookRoomComponent implements OnInit {
         },
         error: (error) => {
           this.loading = false;
+          this.cdr.detectChanges();
           console.error('Booking error:', error);
           console.error('Error details:', error.error);
           if (error.error?.errors) {

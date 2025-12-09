@@ -2,7 +2,10 @@
   <div class="header">
     <h1>Events</h1>
     <div class="location-selector">
-      <span>Rattha Tek Meadows, Chennai</span>
+      <select [(ngModel)]="selectedLocationFilter" (change)="onLocationFilterChange()" class="form-select">
+        <option [value]="null">All Locations</option>
+        <option *ngFor="let location of locations" [value]="location.LocationId">{{location.Name}}</option>
+      </select>
     </div>
   </div>
 
@@ -16,7 +19,8 @@
   <div class="events-grid" *ngIf="!loading">
     <div *ngFor="let event of filteredEvents" class="event-card">
       <div class="event-image">
-        <img [src]="getEventImage(event)" [alt]="event.EventTitle">
+        <img *ngIf="getEventImage(event)" [src]="getEventImage(event)" [alt]="event.EventTitle">
+        <div *ngIf="!getEventImage(event)" class="no-image-placeholder">No Image</div>
         <div class="event-status" [class]="getEventStatusClass(event)">{{getEventStatus(event)}}</div>
       </div>
       <div class="event-info">

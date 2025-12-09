@@ -40,21 +40,28 @@
             <div class="card">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Resources</h5>
-                <button class="btn btn-sm btn-primary" (click)="showResourceForm = true">
+                <button class="btn btn-sm btn-primary" (click)="showResourceForm = true; scrollToResourceForm()">
                   <i class="fas fa-plus"></i> Add Resource
                 </button>
               </div>
               <div class="card-body">
+                <!-- Location Filter -->
+                <div class="mb-3">
+                  <select class="form-select form-select-sm" [(ngModel)]="selectedLocationFilter" (change)="filterByLocation()">
+                    <option value="">All Locations</option>
+                    <option *ngFor="let location of locations" [value]="location.LocationId">{{ location.Name }}</option>
+                  </select>
+                </div>
                 @if (loading) {
                 <div class="text-center">
                   <div class="spinner-border spinner-border-sm"></div>
                   <p class="mt-2">Loading...</p>
                 </div>
                 }
-                @if (!loading && resources.length === 0) {
+                @if (!loading && paginatedResources.length === 0) {
                 <p class="text-muted">No resources found</p>
                 }
-                @for (resource of resources; track resource.Id) {
+                @for (resource of paginatedResources; track resource.Id) {
                 <div class="resource-item" [ngClass]="{'active': selectedResource?.Id === resource.Id}"
                   (click)="selectResource(resource)">
                   <div class="d-flex align-items-center">
@@ -66,6 +73,21 @@
                       </small>
                     </div>
                     <span class="badge bg-secondary">{{ getResourceTypeText(resource.ResourceType) }}</span>
+                  </div>
+                </div>
+                }
+                
+                <!-- Pagination -->
+                @if (totalPages > 1) {
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <small class="text-muted">Page {{ currentPage }} of {{ totalPages }}</small>
+                  <div class="btn-group btn-group-sm">
+                    <button class="btn btn-outline-secondary" (click)="previousPage()" [disabled]="currentPage === 1">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" (click)="nextPage()" [disabled]="currentPage === totalPages">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
                   </div>
                 </div>
                 }

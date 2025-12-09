@@ -65,6 +65,7 @@
           type="datetime-local" 
           id="startTime" 
           formControlName="startTime"
+          [min]="minDateTime"
           [class.error]="bookingForm.get('startTime')?.invalid && bookingForm.get('startTime')?.touched">
         <div *ngIf="bookingForm.get('startTime')?.invalid && bookingForm.get('startTime')?.touched" class="error-message">
           Start time is required
@@ -77,6 +78,7 @@
           type="datetime-local" 
           id="endTime" 
           formControlName="endTime"
+          [min]="bookingForm.get('startTime')?.value || minDateTime"
           [class.error]="bookingForm.get('endTime')?.invalid && bookingForm.get('endTime')?.touched">
         <div *ngIf="bookingForm.get('endTime')?.invalid && bookingForm.get('endTime')?.touched" class="error-message">
           End time is required

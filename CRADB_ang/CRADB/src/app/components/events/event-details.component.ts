@@ -62,14 +62,18 @@ export class EventDetailsComponent implements OnInit {
   loadUserRsvp(eventId: number): void {
     this.rsvpService.getUserRsvp(eventId).subscribe({
       next: (rsvp) => {
+        console.log('User RSVP loaded:', rsvp);
         if (rsvp) {
           this.userRsvpStatus = this.getStatusString(rsvp.Status);
+          console.log('User RSVP status set to:', this.userRsvpStatus);
         } else {
           this.userRsvpStatus = '';
+          console.log('No RSVP found for user');
         }
         this.cdr.detectChanges();
       },
-      error: () => {
+      error: (error) => {
+        console.log('Error loading user RSVP:', error);
         this.userRsvpStatus = '';
         this.cdr.detectChanges();
       }
@@ -134,13 +138,18 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEventImage(): string {
-    if (!this.event) return '';
-    const images = [
-      'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200',
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200',
-      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200'
-    ];
-    return images[this.event.EventId % images.length];
+    if (!this.event || !this.event.EventImage) {
+      // Fallback image if no event image is available
+      return 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200';
+    }
+    
+    // Check if the image is already a full URL or base64 data
+    if (this.event.EventImage.startsWith('data:') || this.event.EventImage.startsWith('http')) {
+      return this.event.EventImage;
+    }
+    
+    // Otherwise, assume it's base64 encoded and add the data URI prefix
+    return `data:image/jpeg;base64,${this.event.EventImage}`;
   }
 
   formatEventDate(date: string): string {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,8 @@ export class ForgotPasswordComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.emailForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
@@ -44,10 +45,12 @@ export class ForgotPasswordComponent {
           this.loading = false;
           this.otpSent = true;
           this.successMessage = 'OTP sent to your email';
+          this.cdr.detectChanges();
         },
         error: (error) => {
           this.loading = false;
           this.errorMessage = error.error?.message || 'Failed to send OTP';
+          this.cdr.detectChanges();
         }
       });
     }
@@ -68,6 +71,7 @@ export class ForgotPasswordComponent {
         next: (response) => {
           this.loading = false;
           this.successMessage = 'Password reset successfully';
+          this.cdr.detectChanges();
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 2000);
@@ -75,6 +79,7 @@ export class ForgotPasswordComponent {
         error: (error) => {
           this.loading = false;
           this.errorMessage = error.error?.message || 'Failed to reset password';
+          this.cdr.detectChanges();
         }
       });
     }

@@ -21,15 +21,6 @@
           <option [value]="location.LocationId">{{ location.Name }}</option>
           }
         </select>
-
-        <!-- Filter by Department -->
-        <select class="form-select" (change)="onDepartmentFilter($event)"
-          style="border-radius: 8px; border: 1px solid #e0e0e0; width: 170px; padding: 8px 12px; font-size: 14px; height: 40px;">
-          <option value="">All Departments</option>
-          @for (department of departments; track department.DepartmentId) {
-          <option [value]="department.DepartmentId">{{ department.DepartmentName }}</option>
-          }
-        </select>
       </div>
 
       <button class="btn btn-primary" (click)="toggleForm()"
@@ -110,29 +101,16 @@
               style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; font-size: 14px; resize: none;"></textarea>
           </div>
 
-          <!-- Target Type Dropdown -->
-          <div class="mb-4">
-            <select class="form-select" formControlName="targetType" (change)="onTargetTypeChange()"
-              style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; font-size: 14px; color: #666;">
-              <option value="">Select Target Type</option>
-              <option value="location">Location</option>
-              <option value="department">Department</option>
-              <option value="role">Role</option>
-            </select>
-          </div>
-
-          <!-- Dynamic Target Selection -->
-          @if (broadcastForm.get('targetType')?.value) {
+          <!-- Location Selection -->
           <div class="mb-4">
             <select class="form-select" formControlName="targetId"
               style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; font-size: 14px; color: #666;">
-              <option value="">Select {{ getTargetLabel() }}</option>
-              @for (target of targetData; track target.id) {
-              <option [value]="target.id">{{ target.name }}</option>
+              <option [value]="null">All Locations</option>
+              @for (location of locations; track location.LocationId) {
+              <option [value]="location.LocationId">{{ location.Name }}</option>
               }
             </select>
           </div>
-          }
 
           <!-- Action Buttons -->
           <div class="d-flex gap-2 justify-content-end">

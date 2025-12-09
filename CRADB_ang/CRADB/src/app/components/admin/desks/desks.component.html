@@ -39,6 +39,10 @@
         <input type="text" class="search-input" placeholder="Search desks..." [(ngModel)]="searchTerm"
           (input)="applyFilters()">
       </div>
+      <select class="filter-select" [(ngModel)]="selectedLocationFilter" (change)="applyFilters()">
+        <option value="">All Locations</option>
+        <option *ngFor="let location of locations" [value]="location.LocationId">{{ location.Name }}</option>
+      </select>
       <select class="filter-select" [(ngModel)]="statusFilter" (change)="applyFilters()">
         <option value="">All Status</option>
         <option value="available">Available</option>

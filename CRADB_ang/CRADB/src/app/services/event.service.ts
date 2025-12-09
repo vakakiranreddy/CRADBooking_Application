@@ -109,4 +109,34 @@ export class EventService {
   getEventParticipantCount(id: number): Observable<{ eventId: number; participantCount: number }> {
     return this.http.get<{ eventId: number; participantCount: number }>(`${this.apiUrl}/${id}/participants/count`);
   }
+
+  getLocations(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiBaseUrl}/api/Locations`);
+  }
+
+  getEventsWithLocations(): Observable<{ events: EventResponse[], locations: any[] }> {
+    return new Observable(observer => {
+      let events: EventResponse[] = [];
+      let locations: any[] = [];
+      let completed = 0;
+
+      this.getAllEvents().subscribe({
+        next: (e) => {
+          events = e;
+          completed++;
+          if (completed === 2) observer.next({ events, locations });
+        },
+        error: (err) => observer.error(err)
+      });
+
+      this.getLocations().subscribe({
+        next: (l) => {
+          locations = l;
+          completed++;
+          if (completed === 2) observer.next({ events, locations });
+        },
+        error: (err) => observer.error(err)
+      });
+    });
+  }
 }

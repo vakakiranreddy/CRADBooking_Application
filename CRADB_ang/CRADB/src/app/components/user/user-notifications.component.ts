@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationService } from '../../services/notification.service';
 import { AuthService } from '../../services/auth.service';
@@ -16,7 +16,8 @@ export class UserNotificationsComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class UserNotificationsComponent implements OnInit {
         this.notificationService.getUserNotifications(this.currentUser.UserId).subscribe({
           next: (data) => {
             this.notifications = data;
+            this.cdr.detectChanges();
           },
           error: (err) => {
             console.error('Error loading notifications:', err);
