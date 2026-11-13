@@ -63,7 +63,9 @@ export class BookRoomComponent implements OnInit {
 
   updateMinDateTime(): void {
     const now = new Date();
-    this.minDateTime = now.toISOString().slice(0, 16);
+    const pad = (n: number) => String(n).padStart(2, '0');
+    this.minDateTime = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}` +
+      `T${pad(now.getHours())}:${pad(now.getMinutes())}`;
   }
 
   loadResourceDetails(): void {
@@ -121,6 +123,14 @@ export class BookRoomComponent implements OnInit {
 
       if (booking.endTime <= booking.startTime) {
         this.errorMessage = 'End time must be after start time';
+        this.loading = false;
+        return;
+      }
+
+      const earliestStart = new Date();
+      earliestStart.setSeconds(0, 0);
+      if (booking.startTime < earliestStart) {
+        this.errorMessage = 'Start time must be in the future';
         this.loading = false;
         return;
       }
