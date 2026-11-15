@@ -125,6 +125,12 @@ export class BookRoomComponent implements OnInit {
         return;
       }
 
+      if (booking.startTime <= new Date()) {
+        this.errorMessage = 'Start time must be in the future';
+        this.loading = false;
+        return;
+      }
+
       console.log('Booking data being sent:', booking);
       console.log('Start time ISO:', booking.startTime.toISOString());
       console.log('End time ISO:', booking.endTime.toISOString());
